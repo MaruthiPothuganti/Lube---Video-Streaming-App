@@ -9,7 +9,6 @@ import {
   List,
   ListItem,
   ListItemButton,
-  ListItemText,
 } from "@mui/material";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
@@ -47,12 +46,9 @@ export const Navbar = ({ mode, setMode }) => {
               borderRadius: "0.5rem",
             }}
           >
-            <ListItemButton
-              color="inherit"
-              onClick={() => navigate(routeEl.pathToGo)}
-            >
+            <ListItemButton onClick={() => navigate(routeEl.pathToGo)}>
               <routeEl.icon size={24} />
-              <Typography variant="h6" color="initial" marginLeft={2}>
+              <Typography variant="h6" marginLeft={2}>
                 {routeEl.pathName}
               </Typography>
             </ListItemButton>
