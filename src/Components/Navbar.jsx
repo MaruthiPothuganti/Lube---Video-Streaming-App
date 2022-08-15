@@ -8,18 +8,22 @@ import {
   Drawer,
   List,
   ListItem,
-  Divider,
   ListItemButton,
   ListItemText,
 } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
+import { IoMdMenu, BsSun, BsMoonFill } from "./Icons";
+import { routes } from "./Utils/routes";
 
-export const Navbar = () => {
+export const Navbar = ({ mode, setMode }) => {
   const [state, setState] = useState({ top: false });
+
   const toggleDrawer = (open) => {
     setState({ top: open });
   };
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const list = () => (
     <Box
@@ -30,12 +34,27 @@ export const Navbar = () => {
       onClick={() => toggleDrawer(false)}
       onKeyDown={() => toggleDrawer(false)}
     >
-      <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <MenuIcon />
-              <ListItemText primary={text} />
+      <List sx={{ padding: "1rem" }}>
+        {routes.map((routeEl) => (
+          <ListItem
+            key={routeEl.pathName}
+            disablePadding
+            sx={{
+              backgroundColor:
+                location.pathname === routeEl.pathToGo
+                  ? "lightgray"
+                  : "inherit",
+              borderRadius: "0.5rem",
+            }}
+          >
+            <ListItemButton
+              color="inherit"
+              onClick={() => navigate(routeEl.pathToGo)}
+            >
+              <routeEl.icon size={24} />
+              <Typography variant="h6" color="initial" marginLeft={2}>
+                {routeEl.pathName}
+              </Typography>
             </ListItemButton>
           </ListItem>
         ))}
@@ -44,7 +63,7 @@ export const Navbar = () => {
   );
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1, borderBottom: "1px", borderColor: "lightgrey" }}>
       <AppBar position="static" sx={{ p: 1 }}>
         <Toolbar>
           <IconButton
@@ -59,7 +78,7 @@ export const Navbar = () => {
               toggleDrawer(true);
             }}
           >
-            <MenuIcon />
+            <IoMdMenu size={34} />
           </IconButton>
           <Drawer
             anchor="top"
@@ -71,6 +90,9 @@ export const Navbar = () => {
           <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
             LUBE
           </Typography>
+          <IconButton aria-label="theme" onClick={() => setMode(!mode)}>
+            {mode ? <BsMoonFill /> : <BsSun />}
+          </IconButton>
           <Button color="inherit">Login</Button>
         </Toolbar>
       </AppBar>

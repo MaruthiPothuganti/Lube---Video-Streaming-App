@@ -1,15 +1,48 @@
-import { Box, Typography } from "@mui/material";
+import { Box, List, ListItem, ListItemButton, Typography } from "@mui/material";
+import { NavLink, useNavigate, useLocation } from "react-router-dom";
+import { routes } from "./Utils/routes";
 
 export const SideNav = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
   return (
-    <Box sx={{ display: { xs: "none", md: "flex" } }}>
-      <Typography
-        variant="h2"
-        color="initial"
-        sx={{ background: "red", height: "calc(100vh - 64px)" }}
+    <Box
+      sx={{
+        width: "250px",
+        display: { xs: "none", md: "flex" },
+      }}
+      role="presentation"
+      borderRight={1}
+      borderColor="#f3e5f5"
+    >
+      <List
+        sx={{
+          width: "100%",
+          padding: "1rem",
+        }}
       >
-        SideNav
-      </Typography>
+        {routes.map((routeEl) => (
+          <ListItem
+            key={routeEl.pathName}
+            disablePadding
+            sx={{
+              backgroundColor:
+                location.pathname === routeEl.pathToGo
+                  ? "lightgray"
+                  : "inherit",
+              borderRadius: "0.5rem",
+            }}
+          >
+            <ListItemButton onClick={() => navigate(routeEl.pathToGo)}>
+              <routeEl.icon size={24} />
+              <Typography variant="h6" marginLeft={2}>
+                {routeEl.pathName}
+              </Typography>
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
     </Box>
   );
 };
