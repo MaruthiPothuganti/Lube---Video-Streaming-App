@@ -11,6 +11,9 @@ import {
 } from "react-icons/md";
 import { AiFillLike } from "react-icons/ai";
 import { BsSun, BsMoonFill } from "react-icons/bs";
+import { ImHtmlFive2, ImCss3 } from "react-icons/im";
+import { TbBrandJavascript } from "react-icons/tb";
+import { SiRedux, SiReact } from "react-icons/si";
 
 export {
   RiSearchLine,
@@ -26,4 +29,9 @@ export {
   AiFillLike,
   BsSun,
   BsMoonFill,
+  ImHtmlFive2,
+  ImCss3,
+  TbBrandJavascript,
+  SiRedux,
+  SiReact,
 };

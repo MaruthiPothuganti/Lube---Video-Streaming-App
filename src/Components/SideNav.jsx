@@ -9,7 +9,7 @@ export const SideNav = () => {
   return (
     <Box
       sx={{
-        width: "250px",
+        width: "200px",
         display: { xs: "none", md: "flex" },
       }}
       role="presentation"
@@ -36,7 +36,7 @@ export const SideNav = () => {
           >
             <ListItemButton onClick={() => navigate(routeEl.pathToGo)}>
               <routeEl.icon size={24} />
-              <Typography variant="h6" marginLeft={2}>
+              <Typography variant="p" marginLeft={2}>
                 {routeEl.pathName}
               </Typography>
             </ListItemButton>
