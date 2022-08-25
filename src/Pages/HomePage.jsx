@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 import React from "react";
 
-import { VideoCard, Banner } from "../Components";
+import { VideoCard, Slider, Featured } from "../Components";
 
 export const HomePage = () => {
   return (
@@ -14,31 +14,18 @@ export const HomePage = () => {
         overflowY: "scroll",
       }}
     >
-      <Banner />
+      <Slider />
       <Box
         sx={{
           display: "flex",
+          flexDirection: "column",
           flexWrap: "wrap",
           gap: "1rem",
           padding: "1rem",
           justifyContent: "center",
         }}
       >
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
+        <Featured />
       </Box>
     </Box>
   );
