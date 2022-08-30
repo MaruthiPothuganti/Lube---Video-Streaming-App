@@ -6,16 +6,12 @@ import {
   Button,
   IconButton,
   Drawer,
-  List,
-  ListItem,
-  Divider,
-  ListItemButton,
-  ListItemText,
 } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
 import { useState } from "react";
+import { IoMdMenu, BsSun, BsMoonFill } from "./Icons";
+import { MenuListItems } from "./MenuListItems";
 
-export const Navbar = () => {
+export const Navbar = ({ mode, setMode }) => {
   const [state, setState] = useState({ top: false });
   const toggleDrawer = (open) => {
     setState({ top: open });
@@ -30,21 +26,12 @@ export const Navbar = () => {
       onClick={() => toggleDrawer(false)}
       onKeyDown={() => toggleDrawer(false)}
     >
-      <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <MenuIcon />
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
+      <MenuListItems />
     </Box>
   );
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1, borderBottom: "1px", borderColor: "lightgrey" }}>
       <AppBar position="static" sx={{ p: 1 }}>
         <Toolbar>
           <IconButton
@@ -59,7 +46,7 @@ export const Navbar = () => {
               toggleDrawer(true);
             }}
           >
-            <MenuIcon />
+            <IoMdMenu size={34} />
           </IconButton>
           <Drawer
             anchor="top"
@@ -71,6 +58,9 @@ export const Navbar = () => {
           <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
             LUBE
           </Typography>
+          <IconButton aria-label="theme" onClick={() => setMode(!mode)}>
+            {mode ? <BsMoonFill /> : <BsSun />}
+          </IconButton>
           <Button color="inherit">Login</Button>
         </Toolbar>
       </AppBar>

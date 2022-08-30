@@ -1,15 +1,22 @@
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
+import { MenuListItems } from "./MenuListItems";
 
 export const SideNav = () => {
   return (
-    <Box sx={{ display: { xs: "none", md: "flex" } }}>
-      <Typography
-        variant="h2"
-        color="initial"
-        sx={{ background: "red", height: "calc(100vh - 64px)" }}
-      >
-        SideNav
-      </Typography>
+    <Box
+      sx={{
+        width: "200px",
+        display: { xs: "none", md: "flex" },
+      }}
+      role="presentation"
+      borderRight={1}
+      borderColor="#f3e5f5"
+    >
+      <MenuListItems
+        sx={{
+          width: "100%",
+        }}
+      />
     </Box>
   );
 };
