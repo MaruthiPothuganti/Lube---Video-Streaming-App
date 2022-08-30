@@ -20,9 +20,8 @@ export const Featured = ({ deviceType }) => {
         sx={{
           display: "flex",
           justifyContent: "center",
-
           gap: "0.5rem",
-          overflowX: "hidden",
+          flexWrap: "wrap",
           padding: "0.5rem",
         }}
       >

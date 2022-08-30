@@ -21,9 +21,8 @@ export const Trending = () => {
         sx={{
           display: "flex",
           justifyContent: "center",
-
+          flexWrap: "wrap",
           gap: "0.5rem",
-          overflowX: "hidden",
           padding: "0.5rem",
         }}
       >
