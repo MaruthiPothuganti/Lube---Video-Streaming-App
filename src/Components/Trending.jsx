@@ -1,7 +1,8 @@
 import { Box, Typography } from "@mui/material";
+import React from "react";
 import { VideoCard } from "./VideoCard";
 
-export const Featured = ({ deviceType }) => {
+export const Trending = () => {
   return (
     <Box>
       <Box
@@ -13,7 +14,7 @@ export const Featured = ({ deviceType }) => {
           alignItems: "center",
         }}
       >
-        <Typography variant="h6">Featured videos</Typography>
+        <Typography variant="h6">Trending videos</Typography>
         <Typography variant="p">See All</Typography>
       </Box>
       <Box
@@ -34,5 +35,3 @@ export const Featured = ({ deviceType }) => {
     </Box>
   );
 };
-
-export default Featured;

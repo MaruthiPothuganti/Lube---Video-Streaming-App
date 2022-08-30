@@ -9,8 +9,14 @@ export const Slider = () => {
   return (
     <Carousel
       sx={{
-        width: { xs: "100%", md: "80%" },
+        width: { xs: "100%", md: "90%" },
         margin: "0 auto",
+        background:
+          "url('https://res.cloudinary.com/doo5jbomi/image/upload/v1661442940/Video%20Library/web_dev_destjb.jpg')",
+        backdropFilter: "blur(3px)",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        borderRadius: "0.5rem",
       }}
     >
       {banners.map(({ name, Icon }) => {
@@ -21,13 +27,8 @@ export const Slider = () => {
             sx={{
               display: "grid",
               placeItems: "center",
-              borderRadius: "0.5rem",
+
               padding: "1rem",
-              background:
-                "url('https://res.cloudinary.com/doo5jbomi/image/upload/v1661442940/Video%20Library/web_dev_destjb.jpg')",
-              backdropFilter: "blur(3px)",
-              backgroundRepeat: "no-repeat",
-              backgroundSize: "cover",
               color: "black",
             }}
           >
@@ -36,7 +37,7 @@ export const Slider = () => {
             <Button
               variant="contained"
               sx={{ margin: "1rem" }}
-              // onClick={() => navigate("/Explore")}
+              onClick={() => navigate("/Explore")}
             >
               Explore
             </Button>

@@ -1,5 +1,5 @@
 import { Box, List, ListItem, ListItemButton, Typography } from "@mui/material";
-import { NavLink, useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { routes } from "./Utils/routes";
 
 export const SideNav = () => {
