@@ -6,23 +6,16 @@ import {
   Button,
   IconButton,
   Drawer,
-  List,
-  ListItem,
-  ListItemButton,
 } from "@mui/material";
-import { useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { IoMdMenu, BsSun, BsMoonFill } from "./Icons";
-import { routes } from "./Utils/routes";
+import { MenuListItems } from "./MenuListItems";
 
 export const Navbar = ({ mode, setMode }) => {
   const [state, setState] = useState({ top: false });
-
   const toggleDrawer = (open) => {
     setState({ top: open });
   };
-  const navigate = useNavigate();
-  const location = useLocation();
 
   const list = () => (
     <Box
@@ -33,28 +26,7 @@ export const Navbar = ({ mode, setMode }) => {
       onClick={() => toggleDrawer(false)}
       onKeyDown={() => toggleDrawer(false)}
     >
-      <List sx={{ padding: "1rem" }}>
-        {routes.map((routeEl) => (
-          <ListItem
-            key={routeEl.pathName}
-            disablePadding
-            sx={{
-              backgroundColor:
-                location.pathname === routeEl.pathToGo
-                  ? "lightgray"
-                  : "inherit",
-              borderRadius: "0.5rem",
-            }}
-          >
-            <ListItemButton onClick={() => navigate(routeEl.pathToGo)}>
-              <routeEl.icon size={24} />
-              <Typography variant="h6" marginLeft={2}>
-                {routeEl.pathName}
-              </Typography>
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
+      <MenuListItems />
     </Box>
   );
 

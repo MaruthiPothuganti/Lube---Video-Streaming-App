@@ -1,4 +1,4 @@
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { VideoCard } from "../Components";
 
 export const WatchLater = () => {
@@ -35,6 +35,7 @@ export const WatchLater = () => {
           gap: "0.5rem",
           flexWrap: "wrap",
           padding: "1rem",
+          justifyContent: "center",
         }}
       >
         <VideoCard />

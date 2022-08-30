@@ -35,7 +35,13 @@ export const Playlists = () => {
           </Button>
         </Box>
       </Box>
-      <Box>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+        }}
+      >
         <Playlist />
         <Playlist />
       </Box>

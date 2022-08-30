@@ -20,7 +20,6 @@ export const Explore = () => {
       chip.id === item.id ? { ...item, icon: true } : { ...item, icon: false }
     );
     setChips(newChips);
-    console.log(newChips);
   };
 
   return (
