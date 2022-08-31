@@ -8,6 +8,7 @@ import {
   Drawer,
 } from "@mui/material";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { IoMdMenu, BsSun, BsMoonFill } from "./Icons";
 import { MenuListItems } from "./MenuListItems";
 
@@ -61,7 +62,9 @@ export const Navbar = ({ mode, setMode }) => {
           <IconButton aria-label="theme" onClick={() => setMode(!mode)}>
             {mode ? <BsMoonFill /> : <BsSun />}
           </IconButton>
-          <Button color="inherit">Login</Button>
+          <Link to="/Auth">
+            <Button color="inherit">Login</Button>
+          </Link>
         </Toolbar>
       </AppBar>
     </Box>
