@@ -1,17 +1,25 @@
-import {
-  Box,
-  Button,
-  FormControl,
-  Paper,
-  Stack,
-  TextField,
-} from "@mui/material";
+import { Box, Button, FormControl, Stack, TextField } from "@mui/material";
 import React from "react";
 
 export const SignUp = () => {
   return (
-    <Paper elevation={3}>
-      <FormControl>
+    <Box elevation={3}>
+      <FormControl
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "1rem",
+        }}
+      >
+        <TextField
+          required
+          id="fullName"
+          label="Full Name"
+          helperText=""
+          variant="outlined"
+          size="small"
+        />
+
         <TextField
           required
           id="email"
@@ -31,16 +39,8 @@ export const SignUp = () => {
         />
         <TextField
           required
-          id="email"
-          label="Email"
-          helperText=""
-          variant="outlined"
-          size="small"
-        />
-        <TextField
-          required
-          id="password"
-          label="Password"
+          id="confirmPassword"
+          label="Confirm Password"
           type="password"
           helperText=""
           variant="outlined"
@@ -52,6 +52,6 @@ export const SignUp = () => {
           </Button>
         </Stack>
       </FormControl>
-    </Paper>
+    </Box>
   );
 };

@@ -1,18 +1,4 @@
-import {
-  Box,
-  TextField,
-  FormControl,
-  FormLabel,
-  FormHelperText,
-  Paper,
-  InputLabel,
-  Input,
-  Button,
-  Stack,
-  Tabs,
-  Tab,
-  Typography,
-} from "@mui/material";
+import { Box, Paper, Tabs, Tab } from "@mui/material";
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Login, SignUp } from "../Components";
@@ -28,7 +14,7 @@ function TabPanel(props) {
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
-      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
+      {value === index && <Paper sx={{ p: 4 }}>{children}</Paper>}
     </div>
   );
 }
@@ -58,9 +44,10 @@ export const Auth = () => {
       sx={{
         height: "calc(100vh - 64px)",
         padding: "1rem",
-        overflowY: "scroll",
-        display: "grid",
-        placeItems: "center",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
       }}
     >
       <Box sx={{ borderBottom: 1, borderColor: "divider" }}>

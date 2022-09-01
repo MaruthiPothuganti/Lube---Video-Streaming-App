@@ -9,8 +9,7 @@ import {
   Playlists,
   LikedVideos,
   WatchLater,
-  Login,
-  SignUp,
+
   Auth,
 } from "./Pages";
 import { useState } from "react";
@@ -45,8 +44,6 @@ const App = () => {
             <Route path="/LikedVideos" element={<LikedVideos />} />
             <Route path="/WatchLater" element={<WatchLater />} />
             <Route path="/Auth" element={<Auth />} />
-            <Route path="/Login" element={<Login />} />
-            <Route path="/SignUp" element={<SignUp />} />
           </Routes>
         </Stack>
       </Box>
