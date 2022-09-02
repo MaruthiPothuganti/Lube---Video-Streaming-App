@@ -1,11 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { getDefaultMiddleware } from '@reduxjs/toolkit';
+import loginReducer from '../features/LoginSlice'
 
 
 export const store = configureStore({
-    reducer: {},
-    middleware: getDefaultMiddleware =>
-    getDefaultMiddleware({
-      serializableCheck: false,
-    }),
+    reducer: {
+        login: loginReducer,
+    },
+
 })
