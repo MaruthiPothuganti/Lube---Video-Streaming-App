@@ -2,15 +2,15 @@ import "./App.css";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { Navbar } from "./Components";
 import { ThemeProvider, Box, Stack, createTheme } from "@mui/material";
-import { SideNav } from "./Components";
+import { SideNav, RequireAuth } from "./Components";
 import {
   HomePage,
   Explore,
   Playlists,
   LikedVideos,
   WatchLater,
-
   Auth,
+  Profile
 } from "./Pages";
 import { useState } from "react";
 
@@ -39,10 +39,11 @@ const App = () => {
           {location.pathname !== "/" ? <SideNav /> : null}
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/Explore" element={<Explore />} />
-            <Route path="/Playlists" element={<Playlists />} />
-            <Route path="/LikedVideos" element={<LikedVideos />} />
-            <Route path="/WatchLater" element={<WatchLater />} />
+            <Route path="/Explore" element={<RequireAuth><Explore /></RequireAuth>} />
+            <Route path="/Playlists" element={<RequireAuth><Playlists /></RequireAuth>} />
+            <Route path="/LikedVideos" element={<RequireAuth><LikedVideos /></RequireAuth>} />
+            <Route path="/WatchLater" element={<RequireAuth><WatchLater /></RequireAuth>} />
+            <Route path="/Profile" element={<RequireAuth><Profile /></RequireAuth>} />
             <Route path="/Auth" element={<Auth />} />
           </Routes>
         </Stack>

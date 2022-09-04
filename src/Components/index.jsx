@@ -7,3 +7,4 @@ export { Trending } from "./Trending";
 export { Playlist } from "./Playlist";
 export { Login } from "./Login";
 export { SignUp } from "./SignUp";
+export { RequireAuth } from "./Utils/RequireAuth";

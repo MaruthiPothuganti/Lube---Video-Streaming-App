@@ -8,12 +8,14 @@ import {
   Drawer,
 } from "@mui/material";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { IoMdMenu, BsSun, BsMoonFill } from "./Icons";
+import { IoMdMenu, BsSun, BsMoonFill, CgProfile } from "./Icons";
 import { MenuListItems } from "./MenuListItems";
 
 export const Navbar = ({ mode, setMode }) => {
   const [state, setState] = useState({ top: false });
+  const token = useSelector((state) => state?.login?.token);
   const toggleDrawer = (open) => {
     setState({ top: open });
   };
@@ -62,9 +64,19 @@ export const Navbar = ({ mode, setMode }) => {
           <IconButton aria-label="theme" onClick={() => setMode(!mode)}>
             {mode ? <BsMoonFill /> : <BsSun />}
           </IconButton>
-          <Link to="/Auth">
-            <Button color="inherit">Login</Button>
-          </Link>
+          {token ? (
+            <Link to="/Profile">
+              <IconButton>
+                <CgProfile size={32} />
+              </IconButton>
+            </Link>
+          ) : (
+            <Link to="/Auth">
+              <IconButton>
+                <CgProfile size={32} />
+              </IconButton>
+            </Link>
+          )}
         </Toolbar>
       </AppBar>
     </Box>
