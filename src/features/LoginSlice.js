@@ -36,21 +36,18 @@ const loginSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(loginUser.pending, (state, action) => {
-        console.log(action);
-        // state.loading = true;
+        state.loading = true;
       })
       .addCase(loginUser.fulfilled, (state, action) => {
-        console.log(action);
-        // state.loading = false;
-        // state.token = action?.payload?.encodedToken;
-        // state.email = action?.payload?.foundUser.firstName;
-        // state.fullName = action?.payload?.foundUser.email;
-        // localStorage.setItem("lubeDetails", JSON.stringify(state));
+        state.loading = false;
+        state.token = action?.payload?.encodedToken;
+        state.email = action?.payload?.foundUser.email;
+        state.fullName = action?.payload?.foundUser.firstName;
+        localStorage.setItem("lubeDetails", JSON.stringify(state));
       })
       .addCase(loginUser.rejected, (state, action) => {
-        console.log(action);
-        // state.loading = false;
-        // state.error = action?.payload?.message;
+        state.loading = false;
+        state.error = action?.payload?.message;
       });
   },
 });

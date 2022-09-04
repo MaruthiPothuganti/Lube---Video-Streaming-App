@@ -1,6 +1,6 @@
 import { Box, Button, FormControl, Stack, TextField } from "@mui/material";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { signupUser } from "../features/SignUpSlice";
 
@@ -14,12 +14,12 @@ export const SignUp = () => {
   const [formValues, setFormValues] = useState(initialFormValues);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
+  let from = location.state?.from?.pathname || "/";
 
   const formHandler = (e) => {
     e.preventDefault();
-    console.log("here");
-    signupUser({ navigate, formValues });
-    console.log("here1");
+    dispatch(signupUser({ formValues, navigate, from }));
   };
 
   return (
@@ -86,10 +86,9 @@ export const SignUp = () => {
               color="primary"
               type="submit"
               disabled={
-                !(
-                  formValues == "" ||
-                  formValues.password === formValues.confirmPassword
-                )
+                formValues.password === "" ||
+                formValues.confirmPassword === "" ||
+                formValues.password !== formValues.confirmPassword
               }
             >
               SignUp

@@ -6,9 +6,8 @@ export const signupUser = createAsyncThunk(
   "Auth/SignUp",
   async (data, thunkAPI) => {
     try {
-      console.log("here222");
-      const { credentials, navigate } = data;
-      const { email, password, firstName } = credentials;
+      const { formValues, navigate, from } = data;
+      const { email, password, firstName } = formValues;
       const resp = await axios.post("api/auth/signup", {
         email,
         password,
@@ -34,14 +33,12 @@ const SignUpSlice = createSlice({
         state.loading = true;
       })
       .addCase(signupUser.fulfilled, (state, action) => {
-        state.loading = false;
         state.token = action?.payload?.encodedToken;
-        state.email = action?.payload?.foundUser.firstName;
-        state.fullName = action?.payload?.foundUser.email;
+        state.email = action?.payload?.createdUser.email;
+        state.fullName = action?.payload?.createdUser.firstName;
         localStorage.setItem("lubeDetails", JSON.stringify(state));
       })
       .addCase(signupUser.rejected, (state, action) => {
-        state.loading = false;
         state.error = action?.payload?.message;
       });
   },
