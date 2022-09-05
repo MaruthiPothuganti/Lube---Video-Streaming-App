@@ -33,22 +33,23 @@ const loginSlice = createSlice({
       localStorage.removeItem("lubeDetails");
     },
   },
-  extraReducers: (builder) => {
-    builder
-      .addCase(loginUser.pending, (state, action) => {
+  extraReducers:  {
+
+      [loginUser.pending]: (state, action) => {
         state.loading = true;
-      })
-      .addCase(loginUser.fulfilled, (state, action) => {
+      },
+      [loginUser.fulfilled]: (state, action) => {
         state.loading = false;
         state.token = action?.payload?.encodedToken;
         state.email = action?.payload?.foundUser.email;
         state.fullName = action?.payload?.foundUser.firstName;
         localStorage.setItem("lubeDetails", JSON.stringify(state));
-      })
-      .addCase(loginUser.rejected, (state, action) => {
+        localStorage.setItem("lubeToken", JSON.stringify(action?.payload?.encodedToken));
+      },
+      [loginUser.rejected]: (state, action) => {
         state.loading = false;
         state.error = action?.payload?.message;
-      });
+      },
   },
 });
 

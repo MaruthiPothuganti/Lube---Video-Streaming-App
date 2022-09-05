@@ -27,20 +27,20 @@ const SignUpSlice = createSlice({
   name: "signup",
   initialState: initialLoginState,
   reducers: {},
-  extraReducers: (builder) => {
-    builder
-      .addCase(signupUser.pending, (state, action) => {
+  extraReducers:  {
+      [signupUser.pending]: (state) => {
         state.loading = true;
-      })
-      .addCase(signupUser.fulfilled, (state, action) => {
+      },
+      [signupUser.fulfilled]: (state, action) => {
         state.token = action?.payload?.encodedToken;
         state.email = action?.payload?.createdUser.email;
         state.fullName = action?.payload?.createdUser.firstName;
         localStorage.setItem("lubeDetails", JSON.stringify(state));
-      })
-      .addCase(signupUser.rejected, (state, action) => {
+        localStorage.setItem("lubeToken", JSON.stringify(action?.payload?.encodedToken));
+      },
+     [signupUser.rejected]: (state, action) => {
         state.error = action?.payload?.message;
-      });
+      },
   },
 });
 
