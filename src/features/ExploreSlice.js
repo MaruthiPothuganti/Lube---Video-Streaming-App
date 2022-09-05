@@ -9,9 +9,11 @@ const initialExploreState = {
 }
 
 export const fetchVideos = createAsyncThunk("fetchVideos",
-    async ( thunkAPI)=> {
+    async (data,thunkAPI)=> {
         try {
+            const { setVideoList } = data;
             const resp = await axios.get('/api/videos');
+            setVideoList(resp?.data.videos)
             return resp?.data;
         } catch (error) {
             return thunkAPI.rejectWithValue(error);
@@ -24,16 +26,16 @@ const exploreSlice = createSlice({
     initialState: initialExploreState,
     extraReducers: {
         [fetchVideos.pending]: (state, action) => {
-            console.log(action)
+
             state.loading = true;
         },
         [fetchVideos.fulfilled]: (state, action) => {
-            console.log(action)
+
             state.videos = action?.payload?.videos;
             state.loading = false
         },
         [fetchVideos.rejected]: (state, action) => {
-            console.log(action)
+
             state.error = action?.payload?.message
         },
     }
