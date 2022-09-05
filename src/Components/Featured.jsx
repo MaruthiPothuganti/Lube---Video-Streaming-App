@@ -1,7 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import { VideoCard } from "./VideoCard";
 
-export const Featured = ({ deviceType }) => {
+export const Featured = () => {
   return (
     <Box>
       <Box

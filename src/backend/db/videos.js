@@ -13,7 +13,7 @@ export const videos = [
     category:"HTML",
     description:"Learn most important HTML Interview Questions and Answers asked at every Interview. These Interview questions will be useful to all entry level candidates, beginners, interns and experienced candidates interviewing for the role of HTML Developer, HTML Coder, Front End Developer, UI Designer etc. The examples and sample answers with each question will make it easier for candidates to understand these conceptual, general and situational interview questions.",
     type:"",
-    createdAt: new Date().toLocaleString(),
+    createdAt: new Date().toLocaleDateString(),
   },{
     _id: "WzAgkVmVHQw",
     title: "Top 50 HTML Interview Questions and Answers | HTML Interview Preparation | Edureka",
@@ -21,7 +21,7 @@ export const videos = [
     category:"HTML",
     description:"This Edureka video on HTML Interview Questions consist of Top 50 most frequently asked questions. This will help you prepare for your web development interviews.",
     type:"",
-    createdAt: new Date().toLocaleString(),
+    createdAt: new Date().toLocaleDateString(),
   },{
     _id: "qz0aGYrrlhU",
     title: "HTML Tutorial for Beginners: HTML Crash Course",
@@ -29,7 +29,7 @@ export const videos = [
     category:"HTML",
     description: "HTML Tutorial for Beginners - Learn HTML for a career in web development. This HTML tutorial teaches you everything you need to get started.",
     type:"",
-    createdAt: new Date().toLocaleString(),
+    createdAt: new Date().toLocaleDateString(),
   },{
     _id: "BsDoLVMnmZs",
     title: "HTML Tutorial For Beginners In Hindi (With Notes) 🔥",
@@ -37,7 +37,7 @@ export const videos = [
     category:"HTML",
     description:"Learn HTML in One Video: In this video, we will see how to create beautiful websites using Html. HTML is the language used for website design. This hindi course on html will teach you everything you need to learn about html tags, lists, tables, seo etc.",
     type:"",
-    createdAt: new Date().toLocaleString(),
+    createdAt: new Date().toLocaleDateString(),
   },{
     _id: "kUMe1FH4CHE",
     title: "Learn HTML – Full Tutorial for Beginners (2022)",
@@ -45,7 +45,7 @@ export const videos = [
     category:"HTML",
     description:"Learn HTML in this complete course for beginners. This is an all-in-one beginner tutorial to help you learn web development skills. This course teaches HTML5. ",
     type:"",
-    createdAt: new Date().toLocaleString(),
+    createdAt: new Date().toLocaleDateString(),
   },{
     _id: "G3e-cpL7ofc",
     title: "HTML & CSS Full Course - Beginner to Pro (2022)",
@@ -53,7 +53,7 @@ export const videos = [
     category:"HTML",
     description:"In this full course, we learn how to build websites with HTML and CSS, and get started as a software engineer.",
     type:"",
-    createdAt: new Date().toLocaleString(),
+    createdAt: new Date().toLocaleDateString(),
   },{
     _id: "mU6anWqZJcc",
     title: "Learn HTML5 and CSS3 From Scratch - Full Course",
@@ -61,7 +61,7 @@ export const videos = [
     category:"HTML",
     description:"HTML and CSS are essential skills to have for a career in web development.",
     type:"",
-    createdAt: new Date().toLocaleString(),
+    createdAt: new Date().toLocaleDateString(),
   },{
     _id: "7jaQv6xfQjY",
     title: "HTML Course in 3 Hours in Telugu",
@@ -69,15 +69,15 @@ export const videos = [
     category:"HTML",
     description:"",
     type:"",
-    createdAt: new Date().toLocaleString(),
+    createdAt: new Date().toLocaleDateString(),
   },{
     _id: "1PnVor36_40",
-    title: "Learn CSS in 20 Minutes",
+    title: "Learn CSS in 20 Minutes - CSS",
     creator: "Web Dev Simplified",
     category:"CSS",
     description:"In this video we will cover everything you need to know to get up and running with CSS in only 20 minutes. We will cover CSS syntax, how to add CSS to your HTML, CSS colors, CSS units, the box model, and best practices for CSS walking through a full example of CSS being used to style an HTML page. By the end of this video you will know enough about CSS to style any basic web pages in your own projects!",
     type:"",
-    createdAt: new Date().toLocaleString(),
+    createdAt: new Date().toLocaleDateString(),
   },{
     _id: "1Rs2ND1ryYc",
     title: "CSS Tutorial - Zero to Hero (Complete Course)",
@@ -85,7 +85,7 @@ export const videos = [
     category:"CSS",
     description:"Learn CSS in this full course for beginners. CSS, or Cascading Style Sheet, is responsible for the styling and looks of a website.",
     type:"",
-    createdAt: new Date().toLocaleString(),
+    createdAt: new Date().toLocaleDateString(),
   },{
     _id: "lI1ae4REbFM",
     title: "JavaScript Tutorial for Beginners - Full Course in 12 Hours (2022)",
@@ -93,7 +93,7 @@ export const videos = [
     category:"JS",
     description:"We just created the Best Free JavaScript Programming Course on the planet 🌎Made with lots of ❤️. Kickstart your Web Development career or take it to the next level with this course. This course is perfect for Beginners as well as Intermediate Developers.",
     type:"",
-    createdAt: new Date().toLocaleString(),
+    createdAt: new Date().toLocaleDateString(),
   },{
     _id: "jS4aFq5-91M",
     title: "JavaScript Programming - Full Course",
@@ -101,7 +101,7 @@ export const videos = [
     category:"JS",
     description:"Learn JavaScript from scratch by solving over a hundred different coding challenges.",
     type:"",
-    createdAt: new Date().toLocaleString(),
+    createdAt: new Date().toLocaleDateString(),
   },{
     _id: "bMknfKXIFA8",
     title: "React Course - Beginner's Tutorial for React JavaScript Library [2022]",
@@ -109,7 +109,7 @@ export const videos = [
     category:"ReactJS",
     description:"",
     type:"",
-    createdAt: new Date().toLocaleString(),
+    createdAt: new Date().toLocaleDateString(),
   },{
     _id: "gnkrDse9QKc",
     title: "Beginner React.js Coding Interview (ft. Clément Mihailescu)",
@@ -117,7 +117,7 @@ export const videos = [
     category:"ReactJS",
     description:"I give Clément Mihailescu a mock React.js interview that is geared towards beginners. Checkout the video we made on Clem's channel: https://youtu.be/vHKzIPwWQkg",
     type:"",
-    createdAt: new Date().toLocaleString(),
+    createdAt: new Date().toLocaleDateString(),
   },{
     _id: "Zp6H_YN-hVY",
     title: "21 most asked Javascript interview questions and answers",
@@ -125,7 +125,7 @@ export const videos = [
     category:"JS",
     description:"JavaScript is a dynamic computer programming language. It is lightweight and most commonly used as a part of web pages, whose implementations allow client-side script to interact with the user and make dynamic pages. It is an interpreted programming language with object-oriented capabilities.",
     type:"",
-    createdAt: new Date().toLocaleString(),
+    createdAt: new Date().toLocaleDateString(),
   },{
     _id: "npcNFM9SQTg",
     title: "40+ MOST COMMONLY Asked Questions [JS, CSS, HTML]",
@@ -133,7 +133,7 @@ export const videos = [
     category:"JS",
     description:"Front End Most Commonly Asked Questions (40+ Interview Questions) This video contains the most common front-end interview questions that may come up in your next interview. Video contains HTML, CSS, and JavaScript interview questions and answers to help you land your next role.",
     type:"",
-    createdAt: new Date().toLocaleString(),
+    createdAt: new Date().toLocaleDateString(),
   },{
     _id: "Q1pwh6AKfjI",
     title: "CSS Top 50 Interview Questions Answers | CSS3 interview questions and answers | ARC Tutorials",
@@ -141,7 +141,7 @@ export const videos = [
     category:"CSS",
     description:"Learn css3 interview questions answers for experienced and freshers, css interview questions and answers 2020 for freshers, html css interview questions and answers, css3 interview questions and answers, interview questions on html and css3 for freshers, css interview questions and answers for freshers, interview questions html css javascript, css interview questions and answers, interview questions and answers css3, interview questions on html and css for freshers, css3 interview questions answers,",
     type:"",
-    createdAt: new Date().toLocaleString(),
+    createdAt: new Date().toLocaleDateString(),
   },{
     _id: "mXxsjzgD3CI",
     title: "6 React Interview Questions You Have to Know",
@@ -149,7 +149,7 @@ export const videos = [
     category:"ReactJS",
     description:"The first 1,000 people to use this link will get a 1 month free trial of Skillshare: https://skl.sh/pedrotech02221",
     type:"",
-    createdAt: new Date().toLocaleString(),
+    createdAt: new Date().toLocaleDateString(),
   },{
     _id: "RldEtTTtrEg",
     title: "Cognizant ReactJs developer interview experience | Frontend developer interview |4 years",
@@ -157,7 +157,7 @@ export const videos = [
     category:"ReactJS",
     description:"This video contains Cognizant ReactJs  developer interview experience | Frontend developer interview |4 years.",
     type:"",
-    createdAt: new Date().toLocaleString(),
+    createdAt: new Date().toLocaleDateString(),
   },{
     _id: "t1nFAMws5FI",
     title: "CRAZY JS INTERVIEW 🤯ft. Closures | Namaste 🙏 JavaScript",
@@ -165,7 +165,7 @@ export const videos = [
     category:"JS",
     description:"A JavaScript Interview covering in-depth QnA of closures, Data Hiding, Encapsulation, Function Constructors, Garbage Collector, Memory Leaks, Data Privacy with nitty-gritty details along with advantages, and disadvantages of Closure with a lot of code examples.",
     type:"",
-    createdAt: new Date().toLocaleString(),
+    createdAt: new Date().toLocaleDateString(),
   },{
     _id: "abbdJ4Yfm54",
     title: "Frontend Interview Experience (Unacademy) - Javascript and React JS Interview Questions",
@@ -173,7 +173,7 @@ export const videos = [
     category:"ReactJS",
     description:"I interviewed for Frontend Engineer role at Unacademy.React JS and Javascript Interview questions from the Interview will be discussed in this video including topics like hoisting, Event Deligation, call, bind and apply, Promises, React Lifecycle methods etc.",
     type:"",
-    createdAt: new Date().toLocaleString(),
+    createdAt: new Date().toLocaleDateString(),
   },{
     _id: "ak4p7sdKJQw",
     title: "Frontend CSS Coding Interview | Ft. Clément Mihailescu",
@@ -181,7 +181,7 @@ export const videos = [
     category:"CSS",
     description:"In this video, I'm interviewed by Clément Mihailescu, the CEO of AlgoExpert, to test my CSS knowledge in a 'Google style' interview.",
     type:"",
-    createdAt: new Date().toLocaleString(),
+    createdAt: new Date().toLocaleDateString(),
   },{
     _id: "XEt09iK8IXs",
     title: "Coding Interview with Dan Abramov",
@@ -189,7 +189,7 @@ export const videos = [
     category:"ReactJS",
     description:" Follow me online: https://voidpet.com/benawad",
     type:"",
-    createdAt: new Date().toLocaleString(),
+    createdAt: new Date().toLocaleDateString(),
   },{
     _id: "zrs7u6bdbUw",
     title: "Redux Tutorial - Beginner to Advanced",
@@ -197,7 +197,7 @@ export const videos = [
     category:"Redux",
     description:"Learn how to use Redux in this full course for beginners. You will learn how to use Redux with ReduxToolkit Library to create an application involving HTTP requests.",
     type:"",
-    createdAt: new Date().toLocaleString(),
+    createdAt: new Date().toLocaleDateString(),
   },{
     _id: "bbkBuqC1rU4",
     title: "Redux Toolkit Tutorial – JavaScript State Management Library",
@@ -205,7 +205,7 @@ export const videos = [
     category:"Redux",
     description:"",
     type:"",
-    createdAt: new Date().toLocaleString(),
+    createdAt: new Date().toLocaleDateString(),
   },{
     _id: "7B0imTjDMV4",
     title: "Redux Interview Questions | Most Asked Interview Questions",
@@ -213,7 +213,7 @@ export const videos = [
     category:"Redux",
     description:"What is asked in Redux Interview. This is something that we usually think and don't know what could be asked. But we have to be prepared with everything. Here I am with all the most asked Redux Interview Questions. ",
     type:"",
-    createdAt: new Date().toLocaleString(),
+    createdAt: new Date().toLocaleDateString(),
   },{
     _id: "ruyq2PGHBPI",
     title: "Redux Interview Questions (from a Sr. developer)",
@@ -221,7 +221,7 @@ export const videos = [
     category:"Redux",
     description:"Maybe you've been working with Redux for a few years. But have you ever wondered what'll be asked in a React/Redux interview?!",
     type:"",
-    createdAt: new Date().toLocaleString(),
+    createdAt: new Date().toLocaleDateString(),
   },
 
 ];
@@ -235,5 +235,5 @@ export const videos = [
 //     category:"",
 //     description:"",
 //     type:"",
-//     createdAt: new Date().toLocaleString(),
+//     createdAt: new Date().toLocaleDateString(),
 //   },

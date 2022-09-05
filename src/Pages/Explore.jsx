@@ -1,8 +1,10 @@
 import { Box, Chip } from "@mui/material";
 import { Stack } from "@mui/system";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FcCheckmark } from "react-icons/fc";
-import { VideoCard } from "../Components";
+import { VidCard } from "../Components";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchVideos } from "../features/ExploreSlice";
 
 const chipsInitialState = [
   { name: "All", id: 1, icon: true },
@@ -14,13 +16,30 @@ const chipsInitialState = [
 
 export const Explore = () => {
   const [chips, setChips] = useState(chipsInitialState);
+  const dispatch = useDispatch();
+  const { videos, loading, error } = useSelector((store) => store.explore);
+  const [videoList, setVideoList] = useState(videos);
+  console.log(videos);
+
+  const filterVideos = (chip) => {
+    if (chip.name === "All") {
+      return videos;
+    } else {
+      return [...videos].filter((video) => video.category === chip.name);
+    }
+  };
 
   const handleClick = (chip) => {
     const newChips = chips.map((item) =>
       chip.id === item.id ? { ...item, icon: true } : { ...item, icon: false }
     );
     setChips(newChips);
+    setVideoList(filterVideos(chip));
   };
+
+  useEffect(() => {
+    dispatch(fetchVideos());
+  }, []);
 
   return (
     <Box
@@ -50,19 +69,9 @@ export const Explore = () => {
           justifyContent: "center",
         }}
       >
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
+        {videoList.map((video) => {
+          return <VidCard key={video.id} video={video} />;
+        })}
       </Box>
     </Box>
   );
