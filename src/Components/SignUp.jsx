@@ -1,6 +1,6 @@
 import { Box, Button, FormControl, Stack, TextField } from "@mui/material";
 import React, { useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { signupUser } from "../features/SignUpSlice";
 
@@ -14,12 +14,10 @@ export const SignUp = () => {
   const [formValues, setFormValues] = useState(initialFormValues);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const location = useLocation();
-  let from = location.state?.from?.pathname || "/";
 
   const formHandler = (e) => {
     e.preventDefault();
-    dispatch(signupUser({ formValues, navigate, from }));
+    dispatch(signupUser({ formValues, navigate }));
   };
 
   return (

@@ -14,6 +14,7 @@ import { red } from "@mui/material/colors";
 import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
 import React, { useState } from "react";
 import { MdOutlineMoreVert } from "./Icons";
+import { PlaylistModal } from "./PlaylistModal";
 
 export const VidCard = ({ video }) => {
   return (
@@ -69,6 +70,7 @@ export const VidCard = ({ video }) => {
           </PopupState>
         </Box>
       </Box>
+      <PlaylistModal video={video} />
     </Card>
   );
 };

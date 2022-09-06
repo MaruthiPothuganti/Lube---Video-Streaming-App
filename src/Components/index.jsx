@@ -9,3 +9,4 @@ export { Login } from "./Login";
 export { SignUp } from "./SignUp";
 export { RequireAuth } from "./Utils/RequireAuth";
 export { VidCard } from "./VidCard";
+export { PlaylistModal } from "./PlaylistModal";

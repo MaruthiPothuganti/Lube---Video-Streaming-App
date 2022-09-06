@@ -1,8 +1,11 @@
 import { Box, Button, Typography } from "@mui/material";
 import { Playlist } from "../Components";
 import { IoMdAdd } from "../Components/Icons";
+import { useDispatch } from "react-redux";
+import { modalOpen } from "../features/PlaylistSlice";
 
 export const Playlists = () => {
+  const dispatch = useDispatch();
   return (
     <Box
       flex={1}
@@ -30,7 +33,11 @@ export const Playlists = () => {
           </Typography>
         </Box>
         <Box>
-          <Button variant="contained" startIcon={<IoMdAdd />}>
+          <Button
+            variant="contained"
+            startIcon={<IoMdAdd />}
+            onClick={() => dispatch(modalOpen())}
+          >
             New Playlist
           </Button>
         </Box>
