@@ -1,11 +1,13 @@
 import { Box, Button, Typography } from "@mui/material";
-import { Playlist } from "../Components";
+import { Playlist, PlaylistModal } from "../Components";
 import { IoMdAdd } from "../Components/Icons";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { modalOpen } from "../features/PlaylistSlice";
 
 export const Playlists = () => {
   const dispatch = useDispatch();
+  const playlists = useSelector((store) => store.playlist.playlists);
+  console.log(playlists);
   return (
     <Box
       flex={1}
@@ -40,6 +42,7 @@ export const Playlists = () => {
           >
             New Playlist
           </Button>
+          <PlaylistModal />
         </Box>
       </Box>
       <Box
@@ -49,8 +52,9 @@ export const Playlists = () => {
           justifyContent: "center",
         }}
       >
-        <Playlist />
-        <Playlist />
+        {playlists?.map((playlist) => {
+          return <Playlist key={playlist._id} playlist={playlist} />;
+        })}
       </Box>
     </Box>
   );

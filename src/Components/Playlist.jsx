@@ -1,10 +1,10 @@
 import { Box, Typography } from "@mui/material";
 import { VideoCard } from "./VideoCard";
 
-export const Playlist = () => {
+export const Playlist = ({ playlist }) => {
   return (
     <Box sx={{ padding: "1rem" }}>
-      <Typography variant="h5">Playlist One</Typography>
+      <Typography variant="h5">{playlist.title}</Typography>
       <Box
         sx={{
           display: "flex",
@@ -13,10 +13,9 @@ export const Playlist = () => {
           padding: "1rem",
         }}
       >
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
+        {playlist.videos.map((video) => {
+          <VideoCard video={video} />;
+        })}
       </Box>
     </Box>
   );

@@ -1,18 +1,16 @@
 import {
   Avatar,
   Card,
-  CardHeader,
   CardMedia,
   IconButton,
   Menu,
   MenuItem,
   Box,
   Typography,
-  Stack,
 } from "@mui/material";
 import { red } from "@mui/material/colors";
 import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
-import React, { useState } from "react";
+import React from "react";
 import { MdOutlineMoreVert } from "./Icons";
 import { PlaylistModal } from "./PlaylistModal";
 

@@ -22,14 +22,51 @@ export const fetchPlaylists = createAsyncThunk(
   }
 );
 
+export const fetchSinglePlaylist = createAsyncThunk(
+  "fetchSinglePlaylist",
+  async (_id,thunkAPI) => {
+    try {
+      const resp = await axios.get(`/api/user/playlists/${_id}`, {
+      authorization: localStorage.getItem("lubeToken"),
+    });
+    return resp?.data;
+    } catch (error) {
+      thunkAPI.rejectWithValue(error)
+    }
+  }
+);
+
 export const addPlaylist = createAsyncThunk(
   "addPlaylist",
   async (data,thunkAPI) => {
-    try{
-      const resp = await axios.post("/api/user/playlists", {
+    try {
+      console.log(data)
+      const resp = await axios.post("/api/user/playlists",
+        {
+              playlist: { title: data , description:""}
+        },
+        {
+          headers: {
+             authorization: localStorage.getItem("lubeToken")
+          },
+        }
+      );
+    return resp?.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error)
+    }
+  }
+);
+
+export const addVideoToPlaylist = createAsyncThunk(
+  "addVideoToPlaylist",
+  async (data,thunkAPI) => {
+    try {
+      const { video, _id } = data;
+      const resp = await axios.post(`/api/user/playlists/${_id}`, {
       authorization: localStorage.getItem("lubeToken"),
     }, {
-      playlist: {title:data , description:""}
+      video
     });
     return resp?.data;
     } catch (error) {
@@ -37,6 +74,8 @@ export const addPlaylist = createAsyncThunk(
     }
   }
 );
+
+
 
 const playlistSlice = createSlice({
   name: "playlist",
@@ -57,19 +96,42 @@ const playlistSlice = createSlice({
       state.loading = false;
       state.playlists = action?.playlists;
     },
-    [fetchPlaylists.rejected]: (state, action) => {
-      state.error = action?.data?.meesage;
+    [fetchPlaylists.rejected]: (state) => {
+      state.loading = false;
     },
-    [addPlaylist.pending]: (state) => {
+    [fetchSinglePlaylist.pending]: (state) => {
+      state.loading = true;
+    },
+    [fetchSinglePlaylist.fulfilled]: (state, action) => {
+      state.loading = false;
+      state.playlists = action?.playlist;
+    },
+    [fetchSinglePlaylist.rejected]: (state) => {
+      state.loading = false;
+    },
+    [addPlaylist.pending]: (state, action) => {
+      console.log(action)
       state.loading = true;
     },
     [addPlaylist.fulfilled]: (state, action) => {
       state.loading = false;
-      state.playlists = action?.playlists;
+      state.playlists = action.payload.playlists;
     },
-    [addPlaylist.rejected]: (state, action) => {
-      state.error = action?.data?.meesage;
+    [addPlaylist.rejected]: (state,action) => {
+      console.log(action)
+      state.loading = false;
     },
+    [addVideoToPlaylist.pending]: (state) => {
+      state.loading = true;
+    },
+    [addVideoToPlaylist.fulfilled]: (state, action) => {
+      state.loading = false;
+      state.playlists = action?.playlist;
+    },
+    [addVideoToPlaylist.rejected]: (state) => {
+      state.loading = false;
+    },
+
   },
 });
 

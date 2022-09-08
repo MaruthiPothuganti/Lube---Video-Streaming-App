@@ -1,14 +1,14 @@
-import { Backdrop, Box, Button, Modal, TextField } from "@mui/material";
-import React from "react";
+import { Backdrop, Box, Button, Modal, Stack, TextField } from "@mui/material";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { modalClose } from "../features/PlaylistSlice";
+import { useLocation } from "react-router-dom";
+import { modalClose, addPlaylist } from "../features/PlaylistSlice";
 
 const style = {
   position: "absolute",
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-
   bgcolor: "background.paper",
   border: "2px solid lightgray",
   boxShadow: 24,
@@ -16,8 +16,10 @@ const style = {
 };
 
 export const PlaylistModal = () => {
+  const [playlistName, setPlaylistName] = useState("");
   const dispatch = useDispatch();
   const { modalOpen } = useSelector((store) => store.playlist);
+  const { pathname } = useLocation();
 
   return (
     <Modal
@@ -32,20 +34,26 @@ export const PlaylistModal = () => {
       }}
     >
       <Box sx={style}>
-        <Box>
+        <Stack spacing={1}>
           <TextField
             id="playlist"
             label="Playlist Name"
             size="small"
             type="text"
+            value={playlistName}
+            onChange={(e) => setPlaylistName(e.target.value)}
           />
-        </Box>
-        <Button variant="contained" onClick={() => dispatch(modalClose())}>
-          Close
-        </Button>
+          <Button
+            variant="contained"
+            onClick={() => {
+              dispatch(addPlaylist(playlistName));
+            }}
+            size="small"
+          >
+            Create Playlist
+          </Button>
+        </Stack>
       </Box>
     </Modal>
   );
 };
-
-export default Modal;

@@ -1,6 +1,6 @@
 import "./App.css";
 import { Routes, Route, useLocation } from "react-router-dom";
-import { Navbar, PlaylistModal } from "./Components";
+import { Navbar } from "./Components";
 import { ThemeProvider, Box, Stack, createTheme } from "@mui/material";
 import { SideNav, RequireAuth } from "./Components";
 import {
@@ -48,7 +48,7 @@ const App = () => {
           </Routes>
         </Stack>
       </Box>
-      <PlaylistModal />
+
     </ThemeProvider>
   );
 };
