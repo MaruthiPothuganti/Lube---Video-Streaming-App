@@ -2,12 +2,12 @@ import { IconButton, Menu, MenuItem } from "@mui/material";
 import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
 import React from "react";
 import { MdOutlineMoreVert } from "./Icons";
-import { modalOpen } from "../features/PlaylistSlice";
 import { PlaylistModal } from "./PlaylistModal";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
 
 export const PopupMenu = ({ video }) => {
-  console.log("render");
+  const [nestModal, setNestModal] = useState(false);
   const dispatch = useDispatch();
 
   return (
@@ -15,14 +15,13 @@ export const PopupMenu = ({ video }) => {
       <PopupState variant="popover" popupId="demo-popup-menu">
         {(popupState) => (
           <React.Fragment>
-            {console.log(video)}
             <IconButton aria-label="settings" {...bindTrigger(popupState)}>
               <MdOutlineMoreVert />
             </IconButton>
             <Menu {...bindMenu(popupState)}>
               <MenuItem
                 onClick={() => {
-                  dispatch(modalOpen());
+                  setNestModal(true);
                   popupState.close();
                 }}
               >
@@ -33,7 +32,11 @@ export const PopupMenu = ({ video }) => {
           </React.Fragment>
         )}
       </PopupState>
-      <PlaylistModal video={video} />
+      <PlaylistModal
+        video={video}
+        nestModal={nestModal}
+        setNestModal={setNestModal}
+      />
     </>
   );
 };

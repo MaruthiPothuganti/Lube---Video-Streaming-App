@@ -4,7 +4,7 @@ import { VidCard } from "./VidCard";
 export const Playlist = ({ playlist }) => {
   return (
     <Box sx={{ padding: "1rem" }}>
-      <Typography variant="h5">{playlist.title}</Typography>
+      <Typography variant="h5">{playlist.title.toUpperCase()}</Typography>
       <Box
         sx={{
           display: "flex",

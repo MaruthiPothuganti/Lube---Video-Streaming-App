@@ -4,7 +4,7 @@ import axios from "axios";
 const initialState = {
   playlists: null,
   loading: false,
-  modalOpen: false,
+  modalStatus: false,
   error: "",
 };
 
