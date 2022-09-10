@@ -52,9 +52,21 @@ export const Playlists = () => {
             justifyContent: "center",
           }}
         >
-          {playlists?.map((playlist) => {
-            return <Playlist key={playlist._id} playlist={playlist} />;
-          })}
+          {playlists.length > 0 ? (
+            playlists?.map((playlist) => {
+              return <Playlist key={playlist._id} playlist={playlist} />;
+            })
+          ) : (
+            <Typography
+              variant="h3"
+              component="span"
+              sx={{
+                alignSelf: "center",
+              }}
+            >
+              No Lists Here
+            </Typography>
+          )}
         </Box>
       </Box>
       <PlaylistModal nestModal={modalStatus} setNestModal={setModalStatus} />

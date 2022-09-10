@@ -31,9 +31,17 @@ export const Playlist = ({ playlist }) => {
           padding: "1rem",
         }}
       >
-        {playlist.videos.map((video) => {
-          return <VidCard key={video._id} video={video} playlist={playlist} />;
-        })}
+        {playlist.videos.length > 0 ? (
+          playlist.videos.map((video) => {
+            return (
+              <VidCard key={video._id} video={video} playlist={playlist} />
+            );
+          })
+        ) : (
+          <Typography variant="h5" textAlign="center">
+            {"<empty list/>"}
+          </Typography>
+        )}
       </Box>
     </Box>
   );
