@@ -1,4 +1,4 @@
-import { configureStore } from '@reduxjs/toolkit'
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit'
 import loginReducer from '../features/LoginSlice'
 import signupReducer from '../features/SignUpSlice'
 import exploreReducer from '../features/ExploreSlice'
@@ -12,5 +12,8 @@ export const store = configureStore({
         explore: exploreReducer,
         playlist: playlistReducer,
     },
-
+    middleware: getDefaultMiddleware =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
 })

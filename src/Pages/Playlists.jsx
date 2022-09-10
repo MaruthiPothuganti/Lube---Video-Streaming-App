@@ -8,6 +8,8 @@ export const Playlists = () => {
   const dispatch = useDispatch();
   const playlists = useSelector((store) => store.playlist.playlists);
   console.log(playlists);
+  const store = useSelector((store) => store);
+
   return (
     <Box
       flex={1}
@@ -28,7 +30,7 @@ export const Playlists = () => {
       >
         <Box sx={{ display: "flex" }}>
           <Typography variant="h2" component="p" color="#1976d2">
-            2
+            {playlists ? playlists.length : 0}
           </Typography>
           <Typography variant="h2" component="p" color="inherit">
             Playlists

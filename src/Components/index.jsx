@@ -10,3 +10,4 @@ export { SignUp } from "./SignUp";
 export { RequireAuth } from "./Utils/RequireAuth";
 export { VidCard } from "./VidCard";
 export { PlaylistModal } from "./PlaylistModal";
+export { PopupMenu } from "./PopupMenu";

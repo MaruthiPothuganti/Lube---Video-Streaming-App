@@ -8,35 +8,31 @@ const initialState = {
   error: "",
 };
 
-export const fetchPlaylists = createAsyncThunk(
-  "fetchPlaylists",
-  async (thunkAPI) => {
-    try {
-      const resp = await axios.get("/api/user/playlists", {
-      authorization: localStorage.getItem("lubeToken"),
-    });
-    return resp?.data;
-    } catch (error) {
-      thunkAPI.rejectWithValue(error)
-    }
-  }
-);
 
-export const fetchSinglePlaylist = createAsyncThunk(
-  "fetchSinglePlaylist",
-  async (_id,thunkAPI) => {
-    try {
-      const resp = await axios.get(`/api/user/playlists/${_id}`, {
-      authorization: localStorage.getItem("lubeToken"),
-    });
-    return resp?.data;
-    } catch (error) {
-      thunkAPI.rejectWithValue(error)
-    }
-  }
-);
 
 export const addPlaylist = createAsyncThunk(
+  "addPlaylist",
+  async (data,thunkAPI) => {
+    try {
+      console.log(data)
+      const resp = await axios.post("/api/user/playlists",
+        {
+              playlist: { title: data , description:""}
+        },
+        {
+          headers: {
+             authorization: localStorage.getItem("lubeToken")
+          },
+        }
+      );
+    return resp?.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error)
+    }
+  }
+);
+
+export const deletePlaylist = createAsyncThunk(
   "addPlaylist",
   async (data,thunkAPI) => {
     try {
@@ -63,10 +59,32 @@ export const addVideoToPlaylist = createAsyncThunk(
   async (data,thunkAPI) => {
     try {
       const { video, _id } = data;
-      const resp = await axios.post(`/api/user/playlists/${_id}`, {
-      authorization: localStorage.getItem("lubeToken"),
-    }, {
-      video
+      const resp = await axios.post(`/api/user/playlists/${_id}`,
+      {
+        video
+      },
+      {
+        headers:{
+          authorization: localStorage.getItem("lubeToken"),
+      },
+    });
+    return resp?.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error)
+    }
+  }
+);
+
+export const deleteVideoFromPlaylist = createAsyncThunk(
+  "removeVideoFromPlaylist",
+  async (data,thunkAPI) => {
+    try {
+      const { video, _id } = data;
+      const resp = await axios.delete(`/api/user/playlists/${_id}/${video._id}`,
+      {
+        headers:{
+          authorization: localStorage.getItem("lubeToken"),
+      },
     });
     return resp?.data;
     } catch (error) {
@@ -89,49 +107,54 @@ const playlistSlice = createSlice({
     },
   },
   extraReducers: {
-    [fetchPlaylists.pending]: (state) => {
-      state.loading = true;
-    },
-    [fetchPlaylists.fulfilled]: (state, action) => {
-      state.loading = false;
-      state.playlists = action?.playlists;
-    },
-    [fetchPlaylists.rejected]: (state) => {
-      state.loading = false;
-    },
-    [fetchSinglePlaylist.pending]: (state) => {
-      state.loading = true;
-    },
-    [fetchSinglePlaylist.fulfilled]: (state, action) => {
-      state.loading = false;
-      state.playlists = action?.playlist;
-    },
-    [fetchSinglePlaylist.rejected]: (state) => {
-      state.loading = false;
-    },
-    [addPlaylist.pending]: (state, action) => {
-      console.log(action)
+    [addPlaylist.pending]: (state) => {
       state.loading = true;
     },
     [addPlaylist.fulfilled]: (state, action) => {
       state.loading = false;
       state.playlists = action.payload.playlists;
     },
-    [addPlaylist.rejected]: (state,action) => {
-      console.log(action)
+    [addPlaylist.rejected]: (state) => {
       state.loading = false;
     },
-    [addVideoToPlaylist.pending]: (state) => {
+    [addVideoToPlaylist.pending]: (state, action) => {
+      console.log(action)
       state.loading = true;
     },
     [addVideoToPlaylist.fulfilled]: (state, action) => {
+      console.log(action)
       state.loading = false;
-      state.playlists = action?.playlist;
+      state.playlists = state.playlists.map((playlist) => {
+        return playlist._id ===action.payload.playlist._id ? action.payload.playlist: playlist
+      })
     },
-    [addVideoToPlaylist.rejected]: (state) => {
+    [addVideoToPlaylist.rejected]: (state, action) => {
+      console.log(action)
       state.loading = false;
     },
-
+    [deletePlaylist.pending]: (state) => {
+      state.loading = true;
+    },
+    [deletePlaylist.fulfilled]: (state, action) => {
+      state.loading = false;
+      state.playlists = action.payload.playlists;
+    },
+    [deletePlaylist.rejected]: (state) => {
+      state.loading = false;
+    },
+    [deleteVideoFromPlaylist.pending]: (state) => {
+      state.loading = true;
+    },
+    [deleteVideoFromPlaylist.fulfilled]: (state, action) => {
+      console.log(action.payload.playlist)
+      state.loading = false;
+      state.playlists = state.playlists.map((playlist) => {
+        return playlist._id ===action.payload.playlist._id ? action.payload.playlist: playlist
+      })
+    },
+    [deleteVideoFromPlaylist.rejected]: (state) => {
+      state.loading = false;
+    },
   },
 });
 

@@ -1,5 +1,5 @@
 import { Box, Typography } from "@mui/material";
-import { VideoCard } from "./VideoCard";
+import { VidCard } from "./VidCard";
 
 export const Playlist = ({ playlist }) => {
   return (
@@ -14,7 +14,7 @@ export const Playlist = ({ playlist }) => {
         }}
       >
         {playlist.videos.map((video) => {
-          <VideoCard video={video} />;
+          return <VidCard key={video._id} video={video} />;
         })}
       </Box>
     </Box>
