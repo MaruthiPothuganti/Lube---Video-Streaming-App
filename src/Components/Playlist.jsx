@@ -1,10 +1,28 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, IconButton } from "@mui/material";
 import { VidCard } from "./VidCard";
+import { AiOutlineDelete } from "./Icons";
+import { deletePlaylist } from "../features/PlaylistSlice";
+import { useDispatch } from "react-redux";
 
 export const Playlist = ({ playlist }) => {
+  const dispatch = useDispatch();
+
   return (
     <Box sx={{ padding: "1rem" }}>
-      <Typography variant="h5">{playlist.title.toUpperCase()}</Typography>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+        }}
+      >
+        <Typography variant="h5">{playlist.title.toUpperCase()}</Typography>
+        <IconButton
+          aria-label="delete"
+          onClick={() => dispatch(deletePlaylist(playlist))}
+        >
+          <AiOutlineDelete />
+        </IconButton>
+      </Box>
       <Box
         sx={{
           display: "flex",

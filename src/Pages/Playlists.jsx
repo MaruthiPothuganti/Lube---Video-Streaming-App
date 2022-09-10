@@ -7,6 +7,7 @@ import { useState } from "react";
 export const Playlists = () => {
   const [modalStatus, setModalStatus] = useState(false);
   const playlists = useSelector((store) => store.playlist.playlists);
+  console.log(playlists);
 
   return (
     <>

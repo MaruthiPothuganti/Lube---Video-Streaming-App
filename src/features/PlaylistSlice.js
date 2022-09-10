@@ -33,14 +33,11 @@ export const addPlaylist = createAsyncThunk(
 );
 
 export const deletePlaylist = createAsyncThunk(
-  "addPlaylist",
+  "deletePlaylist",
   async (data,thunkAPI) => {
     try {
-      console.log(data)
-      const resp = await axios.post("/api/user/playlists",
-        {
-              playlist: { title: data , description:""}
-        },
+      const { _id } = data;
+      const resp = await axios.delete(`/api/user/playlists/${_id}`,
         {
           headers: {
              authorization: localStorage.getItem("lubeToken")
