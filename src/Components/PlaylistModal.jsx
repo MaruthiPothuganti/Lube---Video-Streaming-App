@@ -64,7 +64,6 @@ export const PlaylistModal = ({ video, setNestModal, nestModal }) => {
           <Stack direction="column" spacing={1}>
             {pathname !== "/Playlists"
               ? playlists?.map((playlist) => {
-                  const { _id } = playlist;
                   return (
                     <FormGroup key={playlist._id}>
                       <FormControlLabel

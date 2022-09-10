@@ -1,16 +1,12 @@
 import { Box, Button, Typography } from "@mui/material";
 import { Playlist, PlaylistModal } from "../Components";
 import { IoMdAdd } from "../Components/Icons";
-import { useDispatch, useSelector } from "react-redux";
-import { modalOpen } from "../features/PlaylistSlice";
+import { useSelector } from "react-redux";
 import { useState } from "react";
 
 export const Playlists = () => {
   const [modalStatus, setModalStatus] = useState(false);
-  const dispatch = useDispatch();
   const playlists = useSelector((store) => store.playlist.playlists);
-  console.log(playlists);
-  const store = useSelector((store) => store);
 
   return (
     <>

@@ -4,9 +4,12 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import { PopupMenu } from "./PopupMenu";
 
-export const VidCard = ({ video }) => {
-  const location = useLocation();
-  const path = location.pathname;
+export const VidCard = ({ video, playlist }) => {
+  const { pathname } = useLocation();
+
+  if (pathname === "/Playlists") {
+    console.log(playlist);
+  }
 
   return (
     <>
@@ -43,7 +46,7 @@ export const VidCard = ({ video }) => {
               <Typography variant="body2">{video.title}</Typography>
               <Typography variant="subtitle2">{video.createdAt}</Typography>
             </Box>
-            <PopupMenu video={video} />
+            <PopupMenu video={video} playlist={playlist} />
           </Box>
         </Box>
       </Card>

@@ -14,7 +14,7 @@ export const Playlist = ({ playlist }) => {
         }}
       >
         {playlist.videos.map((video) => {
-          return <VidCard key={video._id} video={video} />;
+          return <VidCard key={video._id} video={video} playlist={playlist} />;
         })}
       </Box>
     </Box>

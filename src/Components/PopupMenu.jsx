@@ -3,12 +3,15 @@ import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
 import React from "react";
 import { MdOutlineMoreVert } from "./Icons";
 import { PlaylistModal } from "./PlaylistModal";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
+import { deleteVideoFromPlaylist } from "../features/PlaylistSlice";
 
-export const PopupMenu = ({ video }) => {
+export const PopupMenu = ({ video, playlist }) => {
   const [nestModal, setNestModal] = useState(false);
   const dispatch = useDispatch();
+  const { pathname } = useLocation();
 
   return (
     <>
@@ -19,14 +22,28 @@ export const PopupMenu = ({ video }) => {
               <MdOutlineMoreVert />
             </IconButton>
             <Menu {...bindMenu(popupState)}>
-              <MenuItem
-                onClick={() => {
-                  setNestModal(true);
-                  popupState.close();
-                }}
-              >
-                Add to Playlist
-              </MenuItem>
+              {pathname !== "/Playlists" && (
+                <MenuItem
+                  onClick={() => {
+                    setNestModal(true);
+                    popupState.close();
+                  }}
+                >
+                  Add to Playlist
+                </MenuItem>
+              )}
+              {pathname === "/Playlists" ? (
+                <MenuItem
+                  onClick={() => {
+                    const { _id } = playlist;
+                    dispatch(deleteVideoFromPlaylist({ video, _id }));
+                    popupState.close();
+                  }}
+                >
+                  Remove from Playlist
+                </MenuItem>
+              ) : null}
+
               <MenuItem onClick={popupState.close}>Add to Watch Later</MenuItem>
             </Menu>
           </React.Fragment>
