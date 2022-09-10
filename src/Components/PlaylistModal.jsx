@@ -12,7 +12,11 @@ import {
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
-import { addPlaylist, addVideoToPlaylist } from "../features/PlaylistSlice";
+import {
+  addPlaylist,
+  addVideoToPlaylist,
+  deleteVideoFromPlaylist,
+} from "../features/PlaylistSlice";
 import { isVideoInPlaylist } from "./Utils/videoFinders";
 
 const style = {
@@ -32,6 +36,15 @@ export const PlaylistModal = ({ video, setNestModal, nestModal }) => {
   const [playlistName, setPlaylistName] = useState("");
   const dispatch = useDispatch();
   const { pathname } = useLocation();
+
+  const playListManager = ({ video, playlist }) => {
+    const { _id } = playlist;
+    if (isVideoInPlaylist(playlist, video._id)) {
+      dispatch(deleteVideoFromPlaylist({ video, _id }));
+    } else {
+      dispatch(addVideoToPlaylist({ video, _id }));
+    }
+  };
 
   return (
     <React.Fragment>
@@ -56,10 +69,10 @@ export const PlaylistModal = ({ video, setNestModal, nestModal }) => {
                     <FormGroup key={playlist._id}>
                       <FormControlLabel
                         control={<Checkbox />}
+                        checked={isVideoInPlaylist(playlist, video._id)}
                         label={playlist.title}
                         onChange={() => {
-                          dispatch(addVideoToPlaylist({ video, _id }));
-                          console.log(video, _id);
+                          playListManager({ video, playlist });
                         }}
                       />
                     </FormGroup>
