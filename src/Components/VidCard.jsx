@@ -1,16 +1,9 @@
 import { Avatar, Card, CardMedia, Box, Typography } from "@mui/material";
 import { red } from "@mui/material/colors";
 import React from "react";
-import { useLocation } from "react-router-dom";
 import { PopupMenu } from "./PopupMenu";
 
 export const VidCard = ({ video, playlist }) => {
-  const { pathname } = useLocation();
-
-  if (pathname === "/Playlists") {
-    console.log(playlist);
-  }
-
   return (
     <>
       <Card

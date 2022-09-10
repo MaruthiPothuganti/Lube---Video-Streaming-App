@@ -4,7 +4,6 @@ import axios from "axios";
 const initialState = {
   playlists: null,
   loading: false,
-  modalStatus: false,
   error: "",
 };
 
@@ -14,7 +13,6 @@ export const addPlaylist = createAsyncThunk(
   "addPlaylist",
   async (data,thunkAPI) => {
     try {
-      console.log(data)
       const resp = await axios.post("/api/user/playlists",
         {
               playlist: { title: data , description:""}
@@ -95,14 +93,6 @@ export const deleteVideoFromPlaylist = createAsyncThunk(
 const playlistSlice = createSlice({
   name: "playlist",
   initialState,
-  reducers: {
-    modalOpen: (state) => {
-      state.modalOpen = true;
-    },
-    modalClose: (state) => {
-      state.modalOpen = false;
-    },
-  },
   extraReducers: {
     [addPlaylist.pending]: (state) => {
       state.loading = true;
@@ -114,19 +104,16 @@ const playlistSlice = createSlice({
     [addPlaylist.rejected]: (state) => {
       state.loading = false;
     },
-    [addVideoToPlaylist.pending]: (state, action) => {
-      console.log(action)
+    [addVideoToPlaylist.pending]: (state) => {
       state.loading = true;
     },
     [addVideoToPlaylist.fulfilled]: (state, action) => {
-      console.log(action)
       state.loading = false;
       state.playlists = state.playlists.map((playlist) => {
         return playlist._id ===action.payload.playlist._id ? action.payload.playlist: playlist
       })
     },
-    [addVideoToPlaylist.rejected]: (state, action) => {
-      console.log(action)
+    [addVideoToPlaylist.rejected]: (state) => {
       state.loading = false;
     },
     [deletePlaylist.pending]: (state) => {
