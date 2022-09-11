@@ -47,68 +47,66 @@ export const PlaylistModal = ({ video, setNestModal, nestModal }) => {
   };
 
   return (
-    <React.Fragment>
-      <Modal
-        hideBackdrop
-        open={nestModal}
-        onClose={() => setNestModal(false)}
-        aria-labelledby="child-modal-title"
-        aria-describedby="child-modal-description"
-        closeAfterTransition
-        BackdropComponent={Backdrop}
-        BackdropProps={{
-          timeout: 500,
-        }}
-      >
-        <Box sx={style}>
-          <Stack direction="column" spacing={1}>
-            {pathname !== "/Playlists"
-              ? playlists?.map((playlist) => {
-                  return (
-                    <FormGroup key={playlist._id}>
-                      <FormControlLabel
-                        control={<Checkbox />}
-                        checked={isVideoInPlaylist(playlist, video._id)}
-                        label={playlist.title}
-                        onChange={() => {
-                          playListManager({ video, playlist });
-                        }}
-                      />
-                    </FormGroup>
-                  );
-                })
-              : null}
-          </Stack>
-          <Stack spacing={1}>
-            <TextField
-              id="playlist"
-              label="Playlist Name"
-              size="small"
-              type="text"
-              value={playlistName}
-              onChange={(e) => setPlaylistName(e.target.value)}
-            />
-            <Button
-              variant="contained"
-              onClick={() => {
-                dispatch(addPlaylist(playlistName));
-                setPlaylistName("");
-              }}
-              size="small"
-              disabled={playlistName === ""}
-            >
-              Create Playlist
-            </Button>
-            <Button
-              variant="contained"
-              onClick={() => setNestModal(false)}
-              size="small"
-            >
-              Close
-            </Button>
-          </Stack>
-        </Box>
-      </Modal>
-    </React.Fragment>
+    <Modal
+      hideBackdrop
+      open={nestModal}
+      onClose={() => setNestModal(false)}
+      aria-labelledby="child-modal-title"
+      aria-describedby="child-modal-description"
+      closeAfterTransition
+      BackdropComponent={Backdrop}
+      BackdropProps={{
+        timeout: 500,
+      }}
+    >
+      <Box sx={style}>
+        <Stack direction="column" spacing={1}>
+          {pathname !== "/Playlists"
+            ? playlists?.map((playlist) => {
+                return (
+                  <FormGroup key={playlist._id}>
+                    <FormControlLabel
+                      control={<Checkbox />}
+                      checked={isVideoInPlaylist(playlist, video._id)}
+                      label={playlist.title}
+                      onChange={() => {
+                        playListManager({ video, playlist });
+                      }}
+                    />
+                  </FormGroup>
+                );
+              })
+            : null}
+        </Stack>
+        <Stack spacing={1}>
+          <TextField
+            id="playlist"
+            label="Playlist Name"
+            size="small"
+            type="text"
+            value={playlistName}
+            onChange={(e) => setPlaylistName(e.target.value)}
+          />
+          <Button
+            variant="contained"
+            onClick={() => {
+              dispatch(addPlaylist(playlistName));
+              setPlaylistName("");
+            }}
+            size="small"
+            disabled={playlistName === ""}
+          >
+            Create Playlist
+          </Button>
+          <Button
+            variant="contained"
+            onClick={() => setNestModal(false)}
+            size="small"
+          >
+            Close
+          </Button>
+        </Stack>
+      </Box>
+    </Modal>
   );
 };

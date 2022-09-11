@@ -9,11 +9,11 @@ const initialState = {
 
 
 export const addToWatchLater = createAsyncThunk("addToWatchLater",
-    async (data, thunkAPI) => {
+    async (video, thunkAPI) => {
         try {
             const resp = axios.post("/api/user/watchlater",
                 {
-                    data
+                    video
                 },
                 {
                 headers: {
@@ -21,7 +21,7 @@ export const addToWatchLater = createAsyncThunk("addToWatchLater",
                 }
                 }
                 );
-            return resp?.data;
+            return resp;
         } catch (error) {
             return thunkAPI.rejectWithValue(error);
         }
@@ -37,7 +37,7 @@ export const deleteVideoFromWatchLater = createAsyncThunk("deleteVideoFromWatchL
                         authorization: localStorage.getItem("lubeToken"),
                     }
                 });
-            return resp?.data;
+            return resp;
         } catch (error) {
             return thunkAPI.rejectWithValue(error);
         }
@@ -53,16 +53,15 @@ const WatchLaterSlice = createSlice({
     extraReducers: {
 
         [addToWatchLater.pending]: (state,action) => {
-            // console.log(action)
+            console.log(action)
             state.loading = true;
         },
         [addToWatchLater.fulfilled]: (state,action) => {
-            // console.log(action)
             state.loading = false;
-            state.watchLater = action.watchlater;
+            state.watchLater = action.payload.data.watchlater;
         },
         [addToWatchLater.pending]: (state,action) => {
-            // console.log(action)
+            console.log(action)
             state.loading = false;
         },
         [deleteVideoFromWatchLater.pending]: (state) => {

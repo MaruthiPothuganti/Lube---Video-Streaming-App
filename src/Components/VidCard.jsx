@@ -1,9 +1,11 @@
 import { Avatar, Card, CardMedia, Box, Typography } from "@mui/material";
 import { red } from "@mui/material/colors";
 import React from "react";
+import { useState } from "react";
 import { PopupMenu } from "./PopupMenu";
 
 export const VidCard = ({ video, playlist }) => {
+  const [isDotMenuOpen, setIsDotMenuOpen] = useState(false);
   return (
     <>
       <Card
@@ -39,7 +41,12 @@ export const VidCard = ({ video, playlist }) => {
               <Typography variant="body2">{video.title}</Typography>
               <Typography variant="subtitle2">{video.createdAt}</Typography>
             </Box>
-            <PopupMenu video={video} playlist={playlist} />
+            <PopupMenu
+              video={video}
+              playlist={playlist}
+              isDotMenuOpen={isDotMenuOpen}
+              setIsDotMenuOpen={setIsDotMenuOpen}
+            />
           </Box>
         </Box>
       </Card>

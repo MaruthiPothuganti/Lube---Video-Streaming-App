@@ -12,11 +12,18 @@ import {
   deleteVideoFromWatchLater,
 } from "../features/WatchLaterSlice";
 
-export const PopupMenu = ({ video, playlist }) => {
+export const PopupMenu = ({
+  video,
+  playlist,
+  isDotMenuOpen,
+  setIsDotMenuOpen,
+}) => {
   const [nestModal, setNestModal] = useState(false);
   const watchlaterList = useSelector((store) => store.watchlater.watchLater);
   const dispatch = useDispatch();
   const { pathname } = useLocation();
+  const videoCheck = isVideoInWatchLater(watchlaterList, video._id);
+  console.log(videoCheck);
 
   return (
     <>
@@ -56,7 +63,7 @@ export const PopupMenu = ({ video, playlist }) => {
               >
                 Add to Watch Later
               </MenuItem>
-              {/* {isVideoInWatchLater(watchlaterList, video._id) ? (
+              {/* {videoCheck ? (
                 <MenuItem
                   onClick={() => {
                     dispatch(addToWatchLater(video));
