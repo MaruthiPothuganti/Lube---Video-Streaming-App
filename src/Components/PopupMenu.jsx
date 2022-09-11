@@ -1,15 +1,20 @@
 import { IconButton, Menu, MenuItem } from "@mui/material";
 import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
-import React from "react";
+import React, { useState } from "react";
 import { MdOutlineMoreVert } from "./Icons";
 import { PlaylistModal } from "./PlaylistModal";
-import { useDispatch } from "react-redux";
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { deleteVideoFromPlaylist } from "../features/PlaylistSlice";
+import { isVideoInWatchLater } from "./Utils/videoFinders";
+import {
+  addToWatchLater,
+  deleteVideoFromWatchLater,
+} from "../features/WatchLaterSlice";
 
 export const PopupMenu = ({ video, playlist }) => {
   const [nestModal, setNestModal] = useState(false);
+  const watchlaterList = useSelector((store) => store.watchlater.watchLater);
   const dispatch = useDispatch();
   const { pathname } = useLocation();
 
@@ -43,8 +48,33 @@ export const PopupMenu = ({ video, playlist }) => {
                   Remove from Playlist
                 </MenuItem>
               ) : null}
-
-              <MenuItem onClick={popupState.close}>Add to Watch Later</MenuItem>
+              <MenuItem
+                onClick={() => {
+                  dispatch(addToWatchLater(video));
+                  popupState.close();
+                }}
+              >
+                Add to Watch Later
+              </MenuItem>
+              {/* {isVideoInWatchLater(watchlaterList, video._id) ? (
+                <MenuItem
+                  onClick={() => {
+                    dispatch(addToWatchLater(video));
+                    popupState.close();
+                  }}
+                >
+                  Add to Watch Later
+                </MenuItem>
+              ) : (
+                <MenuItem
+                  onClick={() => {
+                    dispatch(deleteVideoFromWatchLater(video));
+                    popupState.close();
+                  }}
+                >
+                  Remove from WatchLater
+                </MenuItem>
+              )} */}
             </Menu>
           </React.Fragment>
         )}

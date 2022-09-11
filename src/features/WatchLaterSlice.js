@@ -6,20 +6,21 @@ const initialState = {
     loading: false,
 }
 
-export const fetchWatchLaterVideos = createAsyncThunk("fetchWatchLaterVideos",
-    async (data, thunkAPI) => {
-        try {
-            const resp = axios.get("/api/user/watchlater");
-            return resp?.data;
-        } catch (error) {
-            return thunkAPI.rejectWithValue(error);
-    }
-})
+
 
 export const addToWatchLater = createAsyncThunk("addToWatchLater",
     async (data, thunkAPI) => {
         try {
-            const resp = axios.post("/api/user/watchlater");
+            const resp = axios.post("/api/user/watchlater",
+                {
+                    data
+                },
+                {
+                headers: {
+                    authorization: localStorage.getItem("lubeToken"),
+                }
+                }
+                );
             return resp?.data;
         } catch (error) {
             return thunkAPI.rejectWithValue(error);
@@ -31,7 +32,11 @@ export const deleteVideoFromWatchLater = createAsyncThunk("deleteVideoFromWatchL
     async (data, thunkAPI) => {
         try {
             const { _id } = data;
-            const resp = axios.delete(`/api/user/watchlater/${_id}`);
+            const resp = axios.delete(`/api/user/watchlater/${_id}`, {
+                    headers: {
+                        authorization: localStorage.getItem("lubeToken"),
+                    }
+                });
             return resp?.data;
         } catch (error) {
             return thunkAPI.rejectWithValue(error);
@@ -44,25 +49,20 @@ export const deleteVideoFromWatchLater = createAsyncThunk("deleteVideoFromWatchL
 const WatchLaterSlice = createSlice({
     name: "watchlater",
     initialState,
+    reducers:{},
     extraReducers: {
-        [fetchWatchLaterVideos.pending]: (state) => {
-            state.loading = true;
-        },
-        [fetchWatchLaterVideos.fulfilled]: (state,action) => {
-            state.loading = false;
-            state.watchLater = action.watchLater;
-        },
-        [fetchWatchLaterVideos.pending]: (state) => {
-            state.loading = false;
-        },
-        [addToWatchLater.pending]: (state) => {
+
+        [addToWatchLater.pending]: (state,action) => {
+            // console.log(action)
             state.loading = true;
         },
         [addToWatchLater.fulfilled]: (state,action) => {
+            // console.log(action)
             state.loading = false;
-            state.watchLater = action.watchLater;
+            state.watchLater = action.watchlater;
         },
-        [addToWatchLater.pending]: (state) => {
+        [addToWatchLater.pending]: (state,action) => {
+            // console.log(action)
             state.loading = false;
         },
         [deleteVideoFromWatchLater.pending]: (state) => {
@@ -70,7 +70,7 @@ const WatchLaterSlice = createSlice({
         },
         [deleteVideoFromWatchLater.fulfilled]: (state,action) => {
             state.loading = false;
-            state.watchLater = action.watchLater;
+            state.watchLater = action.watchlater;
         },
         [deleteVideoFromWatchLater.pending]: (state) => {
             state.loading = false;
