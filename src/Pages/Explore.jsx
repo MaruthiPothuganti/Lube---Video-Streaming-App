@@ -19,7 +19,7 @@ export const Explore = () => {
   const dispatch = useDispatch();
   const { videos, loading, error } = useSelector((store) => store.explore);
   const [videoList, setVideoList] = useState(videos);
-  console.log(videoList);
+
   const filterVideos = (chip) => {
     if (chip.name !== "All") {
       return [...videos].filter((video) => video.category === chip.name);

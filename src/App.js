@@ -48,6 +48,7 @@ const App = () => {
           </Routes>
         </Stack>
       </Box>
+
     </ThemeProvider>
   );
 };

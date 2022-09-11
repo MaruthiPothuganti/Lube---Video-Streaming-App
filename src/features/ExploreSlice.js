@@ -9,7 +9,7 @@ const initialExploreState = {
 }
 
 export const fetchVideos = createAsyncThunk("fetchVideos",
-    async (data,thunkAPI)=> {
+    async (data, thunkAPI) => {
         try {
             const { setVideoList } = data;
             const resp = await axios.get('/api/videos');
@@ -17,8 +17,8 @@ export const fetchVideos = createAsyncThunk("fetchVideos",
             return resp?.data;
         } catch (error) {
             return thunkAPI.rejectWithValue(error);
-}
-})
+        }
+    });
 
 
 const exploreSlice = createSlice({

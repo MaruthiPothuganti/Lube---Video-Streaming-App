@@ -1,10 +1,28 @@
-import { Box, Typography } from "@mui/material";
-import { VideoCard } from "./VideoCard";
+import { Box, Typography, IconButton } from "@mui/material";
+import { VidCard } from "./VidCard";
+import { AiOutlineDelete } from "./Icons";
+import { deletePlaylist } from "../features/PlaylistSlice";
+import { useDispatch } from "react-redux";
 
-export const Playlist = () => {
+export const Playlist = ({ playlist }) => {
+  const dispatch = useDispatch();
+
   return (
     <Box sx={{ padding: "1rem" }}>
-      <Typography variant="h5">Playlist One</Typography>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+        }}
+      >
+        <Typography variant="h5">{playlist.title.toUpperCase()}</Typography>
+        <IconButton
+          aria-label="delete"
+          onClick={() => dispatch(deletePlaylist(playlist))}
+        >
+          <AiOutlineDelete />
+        </IconButton>
+      </Box>
       <Box
         sx={{
           display: "flex",
@@ -13,10 +31,17 @@ export const Playlist = () => {
           padding: "1rem",
         }}
       >
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
+        {playlist.videos.length > 0 ? (
+          playlist.videos.map((video) => {
+            return (
+              <VidCard key={video._id} video={video} playlist={playlist} />
+            );
+          })
+        ) : (
+          <Typography variant="h5" textAlign="center">
+            {"<empty list/>"}
+          </Typography>
+        )}
       </Box>
     </Box>
   );

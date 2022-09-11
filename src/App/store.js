@@ -1,7 +1,8 @@
-import { configureStore } from '@reduxjs/toolkit'
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit'
 import loginReducer from '../features/LoginSlice'
 import signupReducer from '../features/SignUpSlice'
 import exploreReducer from '../features/ExploreSlice'
+import playlistReducer  from '../features/PlaylistSlice'
 
 
 export const store = configureStore({
@@ -9,6 +10,10 @@ export const store = configureStore({
         login: loginReducer,
         signup: signupReducer,
         explore: exploreReducer,
+        playlist: playlistReducer,
     },
-
+    middleware: getDefaultMiddleware =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
 })
