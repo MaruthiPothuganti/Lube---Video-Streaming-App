@@ -10,7 +10,7 @@ import {
   LikedVideos,
   WatchLater,
   Auth,
-  Profile
+  Profile, SingleVideoPage
 } from "./Pages";
 import { useState } from "react";
 import MockmanEs from "mockman-js";
@@ -46,6 +46,7 @@ const App = () => {
             <Route path="/WatchLater" element={<RequireAuth><WatchLater /></RequireAuth>} />
             <Route path="/Profile" element={<RequireAuth><Profile /></RequireAuth>} />
             <Route path="/Auth" element={<Auth />} />
+            <Route path="/:videoId" element={<SingleVideoPage />} />
              <Route path="/mock" element={<MockmanEs />} />
 
           </Routes>

@@ -10,6 +10,7 @@ import { red } from "@mui/material/colors";
 import { useState } from "react";
 import { MdOutlineMoreVert } from "./Icons";
 import { PopupMenu } from "./PopupMenu";
+import { Link } from "react-router-dom";
 
 export const VidCard = ({ video, playlist }) => {
   const [isDotMenuOpen, setIsDotMenuOpen] = useState(false);
@@ -23,16 +24,18 @@ export const VidCard = ({ video, playlist }) => {
         border: "1px solid #f3e5f5",
       }}
     >
-      <CardMedia
-        component="img"
-        height="168"
-        image={`https://img.youtube.com/vi/${video._id}/mqdefault.jpg`}
-        alt={video.title}
-        sx={{
-          objectFit: "contain",
-          ":hover": { cursor: "pointer" },
-        }}
-      />
+      <Link to={`/${video._id}`}>
+        <CardMedia
+          component="img"
+          height="168"
+          image={`https://img.youtube.com/vi/${video._id}/mqdefault.jpg`}
+          alt={video.title}
+          sx={{
+            objectFit: "contain",
+            ":hover": { cursor: "pointer" },
+          }}
+        />
+      </Link>
       <Box padding={1.5} sx={{ display: "flex" }}>
         <Avatar sx={{ bgcolor: red[500] }} aria-label="Video">
           {video.creator.charAt(0)}

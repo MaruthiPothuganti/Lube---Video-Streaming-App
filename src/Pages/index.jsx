@@ -5,3 +5,4 @@ export { LikedVideos } from "./LikedVideos";
 export { WatchLater } from "./WatchLater";
 export { Auth } from "./Auth";
 export { Profile } from "./Profile";
+export { SingleVideoPage } from "./SingleVideoPage";
