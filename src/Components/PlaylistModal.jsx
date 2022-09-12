@@ -31,7 +31,12 @@ const style = {
   p: "1rem",
 };
 
-export const PlaylistModal = ({ video, setNestModal, nestModal }) => {
+export const PlaylistModal = ({
+  video,
+  setNestModal,
+  nestModal,
+  setIsDotMenuOpen,
+}) => {
   const playlists = useSelector((store) => store.playlist.playlists);
   const [playlistName, setPlaylistName] = useState("");
   const dispatch = useDispatch();
@@ -100,7 +105,10 @@ export const PlaylistModal = ({ video, setNestModal, nestModal }) => {
           </Button>
           <Button
             variant="contained"
-            onClick={() => setNestModal(false)}
+            onClick={() => {
+              setNestModal(false);
+              setIsDotMenuOpen(false);
+            }}
             size="small"
           >
             Close

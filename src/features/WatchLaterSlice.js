@@ -53,7 +53,6 @@ const WatchLaterSlice = createSlice({
     extraReducers: {
 
         [addToWatchLater.pending]: (state,action) => {
-            console.log(action)
             state.loading = true;
         },
         [addToWatchLater.fulfilled]: (state,action) => {
@@ -61,15 +60,14 @@ const WatchLaterSlice = createSlice({
             state.watchLater = action.payload.data.watchlater;
         },
         [addToWatchLater.pending]: (state,action) => {
-            console.log(action)
             state.loading = false;
         },
         [deleteVideoFromWatchLater.pending]: (state) => {
             state.loading = true;
         },
-        [deleteVideoFromWatchLater.fulfilled]: (state,action) => {
+        [deleteVideoFromWatchLater.fulfilled]: (state, action) => {
             state.loading = false;
-            state.watchLater = action.watchlater;
+            state.watchLater = action.payload.data.watchlater;
         },
         [deleteVideoFromWatchLater.pending]: (state) => {
             state.loading = false;
@@ -79,11 +77,3 @@ const WatchLaterSlice = createSlice({
 
 
 export default WatchLaterSlice.reducer;
-
-
-
-
-
-
-
-

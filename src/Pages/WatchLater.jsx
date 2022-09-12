@@ -1,13 +1,10 @@
 import { Box, Typography } from "@mui/material";
-import { useEffect } from "react";
 import { VidCard } from "../Components";
 
 import { useDispatch, useSelector } from "react-redux";
 
 export const WatchLater = () => {
-  const dispatch = useDispatch();
   const watchlaterList = useSelector((store) => store.watchlater.watchLater);
-  console.log(watchlaterList);
 
   return (
     <Box
