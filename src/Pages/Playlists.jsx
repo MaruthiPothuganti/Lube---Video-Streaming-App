@@ -52,7 +52,7 @@ export const Playlists = () => {
             justifyContent: "center",
           }}
         >
-          {playlists.length > 0 ? (
+          {playlists?.length > 0 ? (
             playlists?.map((playlist) => {
               return <Playlist key={playlist._id} playlist={playlist} />;
             })

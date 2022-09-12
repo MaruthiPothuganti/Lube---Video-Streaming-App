@@ -1,7 +1,11 @@
 import { Box, Typography } from "@mui/material";
-import { VideoCard } from "../Components";
+import { VidCard } from "../Components";
+
+import { useDispatch, useSelector } from "react-redux";
 
 export const WatchLater = () => {
+  const watchlaterList = useSelector((store) => store.watchlater.watchLater);
+
   return (
     <Box
       flex={1}
@@ -22,7 +26,7 @@ export const WatchLater = () => {
       >
         <Box sx={{ display: "flex" }}>
           <Typography variant="h2" component="p" color="#1976d2">
-            8
+            {watchlaterList?.length}
           </Typography>
           <Typography variant="h2" component="p" color="inherit">
             Videos
@@ -38,14 +42,13 @@ export const WatchLater = () => {
           justifyContent: "center",
         }}
       >
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
+        {watchlaterList?.length > 0 ? (
+          watchlaterList?.map((video) => {
+            return <VidCard key={video._id} video={video} />;
+          })
+        ) : (
+          <Typography variant="h3">No videos Here</Typography>
+        )}
       </Box>
     </Box>
   );

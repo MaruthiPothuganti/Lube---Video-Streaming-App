@@ -130,7 +130,7 @@ const playlistSlice = createSlice({
       state.loading = true;
     },
     [deleteVideoFromPlaylist.fulfilled]: (state, action) => {
-      console.log(action.payload.playlist)
+
       state.loading = false;
       state.playlists = state.playlists.map((playlist) => {
         return playlist._id ===action.payload.playlist._id ? action.payload.playlist: playlist
