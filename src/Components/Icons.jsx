@@ -7,11 +7,12 @@ export {
   MdFeaturedPlayList,
   MdExplore,
   MdWatchLater,
+  MdOutlineWatchLater,
   MdOutlineMoreVert,
 } from "react-icons/md";
-export { AiFillLike, AiOutlineDelete } from "react-icons/ai";
+export { AiFillLike, AiOutlineLike, AiOutlineDelete } from "react-icons/ai";
 export { BsSun, BsMoonFill } from "react-icons/bs";
 export { ImHtmlFive2, ImCss3 } from "react-icons/im";
-export { TbBrandJavascript } from "react-icons/tb";
+export { TbBrandJavascript, TbPlaylistAdd } from "react-icons/tb";
 export { SiRedux, SiReact } from "react-icons/si";
 export { FcCheckmark } from "react-icons/fc";

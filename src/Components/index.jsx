@@ -11,3 +11,4 @@ export { RequireAuth } from "./Utils/RequireAuth";
 export { VidCard } from "./VidCard";
 export { PlaylistModal } from "./PlaylistModal";
 export { PopupMenu } from "./PopupMenu";
+export { SuggestionCard } from "./SuggestionCard";
