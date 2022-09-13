@@ -26,7 +26,7 @@ const App = () => {
     breakpoints: {
       values: {
         xs: 0,
-        md: 768,
+        md: 769,
         lg: 1536,
       },
     },

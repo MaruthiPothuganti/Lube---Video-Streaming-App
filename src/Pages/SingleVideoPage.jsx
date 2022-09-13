@@ -5,7 +5,14 @@ import { useSelector, useDispatch } from "react-redux";
 import ReactPlayer from "react-player";
 import { SuggestionCard } from "../Components";
 import { red } from "@mui/material/colors";
-import { AiOutlineLike } from "../Components/Icons";
+import { isVideoLiked } from "../Components/Utils/videoFinders";
+import {
+  AiOutlineLike,
+  AiFillLike,
+  TbPlaylistAdd,
+  MdWatchLater,
+  MdOutlineWatchLater,
+} from "../Components/Icons";
 
 export const SingleVideoPage = () => {
   const { videoId } = useParams();
@@ -40,12 +47,20 @@ export const SingleVideoPage = () => {
             width="100%"
             height="100%"
           />
+        </Box>
+        <Box
+          padding={2}
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            flexWrap: "wrap",
+          }}
+        >
           <Box
-            padding={2}
             sx={{
               display: "flex",
+              width: "100%",
               justifyContent: "space-between",
-              flexWrap: "wrap",
             }}
           >
             <Stack direction="row" alignItems="center">
@@ -56,29 +71,40 @@ export const SingleVideoPage = () => {
                 {singleVideo.creator}
               </Typography>
             </Stack>
-            <Stack>
+            <Stack direction="row">
               <IconButton aria-label="Like">
                 <AiOutlineLike size={36} />
               </IconButton>
+              <IconButton aria-label="Playlist">
+                <TbPlaylistAdd size={36} />
+              </IconButton>
+              <IconButton aria-label="WatchLater">
+                <MdOutlineWatchLater size={36} />
+              </IconButton>
             </Stack>
+          </Box>
+          <Box>
+            <Typography variant="body1" paddingTop={4}>
+              {singleVideo.description}{" "}
+            </Typography>
           </Box>
         </Box>
       </Box>
-      {/* <Box
-        width="400px"
+      <Box
+        width="300px"
         sx={{
           width: { xs: "100%", md: "400px" },
           borderLeft: { xs: "none", md: "1px solid lightgrey" },
           paddingTop: "0.5rem",
           paddingLeft: "0.5rem",
-          margin: { xs: "10rem 0 0 0", md: "0" },
+          margin: { xs: "1rem 0 0 0", md: "0" },
         }}
       >
         <Typography variant="h5">Related Videos</Typography>
         {suggestedVideos.map((singleVideo) => (
           <SuggestionCard key={singleVideo._id} singleVideo={singleVideo} />
         ))}
-      </Box> */}
+      </Box>
     </Box>
   );
 };

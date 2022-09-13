@@ -9,7 +9,7 @@ export const SuggestionCard = ({ singleVideo }) => {
         sx={{
           display: "flex",
           border: "1px solid lightgrey",
-          margin: "0.75rem",
+          margin: "0.5rem",
           width: "100%",
         }}
       >
