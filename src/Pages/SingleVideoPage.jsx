@@ -57,7 +57,7 @@ export const SingleVideoPage = () => {
           >
             <ReactPlayer
               url={`https://www.youtube.com/watch?v=${videoId}`}
-              // playing="true"
+              playing={true}
               controls={true}
               width="100%"
               height="100%"
