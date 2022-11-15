@@ -34,7 +34,7 @@ const App = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Box bgcolor={"background.default"} color={"text.primary"}>
+      <main bgcolor={"background.default"} color={"text.primary"} style={{height:"100vh"}}>
         <Navbar mode={mode} setMode={setMode} />
         <Stack direction="row">
           {location.pathname !== "/" ? <SideNav /> : null}
@@ -51,8 +51,7 @@ const App = () => {
 
           </Routes>
         </Stack>
-      </Box>
-
+      </main>
     </ThemeProvider>
   );
 };
