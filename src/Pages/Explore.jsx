@@ -60,11 +60,10 @@ export const Explore = () => {
       </Stack>
       <Box
         sx={{
-          display: "flex",
+          display: "grid",
           padding: "1rem",
-          flexWrap: "wrap",
-          gap: "0.5rem",
-          justifyContent: "center",
+          "grid-gap": "1rem",
+          "grid-template-columns": "repeat(auto-fill, minmax(300px, 1fr))",
         }}
       >
         {videoList.map((video) => {

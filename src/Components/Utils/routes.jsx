@@ -4,6 +4,7 @@ import {
   MdExplore,
   MdWatchLater,
   AiFillLike,
+  FaHistory,
 } from "../Icons";
 
 export const routes = [
@@ -31,5 +32,10 @@ export const routes = [
     pathToGo: "/WatchLater",
     pathName: "WatchLater",
     icon: MdWatchLater,
+  },
+  {
+    pathToGo: "/History",
+    pathName: "History",
+    icon: FaHistory,
   },
 ];

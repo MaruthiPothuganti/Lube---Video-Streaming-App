@@ -15,19 +15,25 @@ import { Link } from "react-router-dom";
 export const VidCard = ({ video, playlist }) => {
   const [isDotMenuOpen, setIsDotMenuOpen] = useState(false);
 
+  const truncateText = (text) => {
+    if (text.length <= 30) {
+      return text;
+    } else {
+      return text.slice(0, 30) + "...";
+    }
+  };
+
   return (
     <Card
       sx={{
         position: "relative",
-        maxWidth: 300,
-        minWidth: 250,
         border: "1px solid #f3e5f5",
       }}
     >
       <Link to={`/${video._id}`}>
         <CardMedia
           component="img"
-          height="168"
+          height="auto"
           image={`https://img.youtube.com/vi/${video._id}/mqdefault.jpg`}
           alt={video.title}
           sx={{
@@ -49,7 +55,9 @@ export const VidCard = ({ video, playlist }) => {
           }}
         >
           <Box>
-            <Typography variant="body2">{video.title}</Typography>
+            <Typography variant="body2" title={video.title}>
+              {truncateText(video.title)}
+            </Typography>
             <Typography variant="subtitle2">{video.createdAt}</Typography>
           </Box>
           <Box>
